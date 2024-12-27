@@ -9,7 +9,7 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      <div className="mx-auto max-w-7xl">{children}</div>
+      <div className="mx-auto">{children}</div>
     </>
   );
 }
