@@ -6,6 +6,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "selector",
   theme: {
     extend: {
       colors: {
@@ -13,7 +14,7 @@ export default {
         foreground: "var(--foreground)",
       },
       animation: {
-        "infinite-scroll": "infinite-scroll 1s ease-in infinite",
+        "infinite-scroll": "infinite-scroll 8s ease-in infinite",
       },
       keyframes: {
         "infinite-scroll": {
