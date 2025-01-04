@@ -43,38 +43,41 @@ export default function HeroIcons() {
         <span className="italic text-violet-400">knew</span> and wish to{" "}
         <span className="italic text-violet-400">cherish</span> them?
         </h1> */}
-        <div className="z-10 mx-4 flex flex-col items-center gap-8 border-2 border-slate-900 bg-slate-50 py-8 [box-shadow:4px_4px_0_0_#0f172a]">
-          <div className="flex max-w-6xl flex-col gap-8 px-4">
-            <h1 className="text-4xl/normal font-bold lg:text-6xl/normal">
-              Enim ea quis{" "}
-              <span className="inline-block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                {" "}
-                proident
-              </span>{" "}
-              ullamco magna to{" "}
-              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                eiusmod
-              </span>{" "}
-              nostrud?
-            </h1>
-            {/* <p className="mx-auto max-w-xl px-4 py-8 text-xl text-gray-400 md:text-2xl">
+        <div className="relative z-0 mx-4">
+          {/* <div className="absolute inset-0 max-w-6xl translate-x-6 translate-y-6 scale-105 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] py-8 [background-size:16px_16px]" /> */}
+          <div className="relative z-10 flex flex-col items-center gap-8 border-2 border-slate-900 bg-slate-50 py-8 [box-shadow:4px_4px_0_0_#0f172a]">
+            <div className="relative flex max-w-6xl flex-col gap-8 px-4">
+              <h1 className="text-4xl/normal font-bold lg:text-6xl/normal">
+                Enim ea quis{" "}
+                <span className="inline-block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                  {" "}
+                  proident
+                </span>{" "}
+                ullamco magna to{" "}
+                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                  eiusmod
+                </span>{" "}
+                nostrud?
+              </h1>
+              {/* <p className="mx-auto max-w-xl px-4 py-8 text-xl text-gray-400 md:text-2xl">
         Sometimes the only thing we have is their memories that we certainly
         wouldn&apos;t want to lose.
         <br />
         <br />
         Feel free to add your loved ones, memories, events with them here.
         </p> */}
-            <p className="mx-auto max-w-xl text-xl/normal text-slate-500 md:max-w-3xl lg:text-2xl/normal">
-              Dolor sit, amet consectetur adipisicing elit. Voluptas fugiat,
-              repellendus iste ipsum iusto esse! Ex nisi ut do reprehenderit
-              magna ipsum elit.
-            </p>
+              <p className="mx-auto max-w-xl text-xl/normal text-slate-500 md:max-w-3xl lg:text-2xl/normal">
+                Dolor sit, amet consectetur adipisicing elit. Voluptas fugiat,
+                repellendus iste ipsum iusto esse! Ex nisi ut do reprehenderit
+                magna ipsum elit.
+              </p>
+            </div>
+            <Link href="/sign-up">
+              <button className="mx-auto h-12 rounded-xl border-2 border-slate-900 bg-violet-400 px-4 text-2xl/normal font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]">
+                Share
+              </button>
+            </Link>
           </div>
-          <Link href="/sign-up">
-            <button className="mx-auto h-12 rounded-xl border-2 border-slate-900 bg-violet-400 px-4 text-2xl/normal font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]">
-              Share
-            </button>
-          </Link>
         </div>
       </div>
     </div>

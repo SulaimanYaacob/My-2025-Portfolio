@@ -7,7 +7,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-violet-100">
+    <div className="-z-10 bg-violet-100">
       <Header />
       {/* <div className="absolute right-1/2 top-28 w-[250px] translate-x-1/2 transform bg-cyan-700 p-4 text-center">
         <h2 className="text-2xl font-bold">Reminder</h2>
