@@ -12,7 +12,7 @@ export default function HeroSection() {
 
   return (
     // <div className="lg:py-54 mx-auto max-w-4xl bg-red-400 px-6 py-36 text-center">
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-violet-100">
       <LazyMotion features={domAnimation}>
         <m.div
           className="absolute -right-36 -top-20 h-72 w-72 border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-size:16px_16px]"
@@ -39,7 +39,7 @@ export default function HeroSection() {
         className="mx-4 flex h-screen items-center justify-center"
       >
         <div className="grid max-w-2xl grid-cols-4 items-center gap-8 lg:max-w-7xl lg:gap-4">
-          <div className="relative col-span-full mx-auto mt-10 border-2 border-slate-900 bg-slate-200 [box-shadow:4px_4px_0_0_#0f172a] lg:col-span-1 lg:mt-0">
+          <div className="relative col-span-full mx-auto mt-10 border-2 border-slate-900 bg-slate-50 [box-shadow:4px_4px_0_0_#0f172a] lg:col-span-1 lg:mt-0">
             <Image
               fetchPriority="high"
               priority
