@@ -12,10 +12,10 @@ export default function HeroSection() {
 
   return (
     // <div className="lg:py-54 mx-auto max-w-4xl bg-red-400 px-6 py-36 text-center">
-    <div className="relative overflow-hidden bg-violet-100">
+    <div className="relative overflow-hidden">
       <LazyMotion features={domAnimation}>
         <m.div
-          className="absolute -right-36 -top-20 h-72 w-72 border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-size:16px_16px]"
+          className="absolute -right-36 -top-20 h-72 w-72 border-4 border-slate-900 bg-[radial-gradient(#8b5cf6_1px,transparent_2px)] [background-position:4px_4px] [background-size:16px_16px]"
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
@@ -24,7 +24,7 @@ export default function HeroSection() {
           }}
         />
         <m.div
-          className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-size:16px_16px]"
+          className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full border-4 border-slate-900 bg-[radial-gradient(#8b5cf6_1px,transparent_2px)] [background-position:-8px_8px] [background-size:16px_16px]"
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
@@ -38,8 +38,8 @@ export default function HeroSection() {
         ref={constraintsRef}
         className="mx-4 flex h-screen items-center justify-center"
       >
-        <div className="grid max-w-2xl grid-cols-4 items-center gap-8 lg:max-w-7xl lg:gap-4">
-          <div className="relative col-span-full mx-auto mt-10 border-2 border-slate-900 bg-slate-50 [box-shadow:4px_4px_0_0_#0f172a] lg:col-span-1 lg:mt-0">
+        <div className="grid max-w-2xl grid-cols-4 items-center gap-4 p-4 lg:max-w-7xl lg:gap-4">
+          <div className="relative col-span-full mx-auto mt-20 border-2 border-slate-900 bg-slate-50 [box-shadow:4px_4px_0_0_#0f172a] lg:col-span-1 lg:mt-0">
             <Image
               fetchPriority="high"
               priority
@@ -51,8 +51,8 @@ export default function HeroSection() {
             />
           </div>
           <div className="relative col-span-4 flex flex-col border-2 border-slate-900 bg-slate-50 p-6 [box-shadow:4px_4px_0_0_#0f172a] lg:col-span-3">
-            <div className="flex flex-col gap-4 text-center md:text-start">
-              <h1 className="text-3xl/normal font-bold lg:text-5xl/normal">
+            <div className="flex flex-col gap-4">
+              <h1 className="mg:text-4xl/normal text-3xl/normal font-bold lg:text-5xl/normal">
                 Hi! I&apos;m Sulaiman,{" "}
                 <span className="inline-block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                   a Web Developer

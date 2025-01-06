@@ -1,11 +1,13 @@
 import HeroIcons from "@/components/landing/HeroSection";
+import MyTechSection from "@/components/landing/MyTechSection";
 import OfferSection from "@/components/landing/OfferSection";
 
 export default function Home() {
   return (
-    <div className="text-3xl">
+    <main className="text-3xl">
       <HeroIcons />
       <OfferSection />
-    </div>
+      <MyTechSection />
+    </main>
   );
 }

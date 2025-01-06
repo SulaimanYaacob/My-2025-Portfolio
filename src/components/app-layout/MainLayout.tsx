@@ -26,3 +26,15 @@ export default function MainLayout({
     </div>
   );
 }
+
+//* Notes to Remember
+
+// Someting inline, like text? Lookup MDN, inline things: span, a, em, i, b, del, sup
+// Something like a box?: div, section, main, nav
+// Something for listing?
+// Is it ordered: ol (ordered list)
+// Is it unordered: ul
+// is it with a label and some value related to it? dl (definition list), with a dt (definition title) and 0 or many dd (definition data)
+// Is it in a form, use a form. What fields in that form, make input inside that form, don't go funky! That's when crappy HTML happens! Want to tell what that input[id=fname] is for, add a label[for=fname]. Want to submit the form, use a button, or input[type=submit].
+// Want to not change how the form behaves. Like not changing page. Don't use form[method=get], unless you want URL with ?fname=bob. Use instead method post. But then addEventListener on form, then use e.preventDefault().
+// Then CSS can help rearrange things. Maybe you want the a to be a "box" (or flex, now). That's when you add CSS.

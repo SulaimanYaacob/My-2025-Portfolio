@@ -32,14 +32,14 @@ export default function Header() {
             <Link
               target="_blank"
               href="https://github.com/SulaimanYaacob"
-              className="flex h-12 w-12 items-center justify-center rounded border-2 border-slate-900 bg-violet-400 font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]"
+              className="flex h-12 w-12 items-center justify-center rounded border-2 border-slate-900 font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]"
             >
               <FaGithub size={32} />
             </Link>
             <Link
               target="_blank"
               href="https://www.linkedin.com/in/sulaiman-yaacob/"
-              className="flex h-12 w-12 items-center justify-center rounded border-2 border-slate-900 bg-violet-400 font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]"
+              className="flex h-12 w-12 items-center justify-center rounded border-2 border-slate-900 font-semibold transition-all [box-shadow:4px_4px_0_0_#0f172a] hover:translate-x-1 hover:translate-y-1 hover:[box-shadow:0_0px_0_0_#0f172a]"
             >
               <FaLinkedin size={32} />
             </Link>
