@@ -38,7 +38,7 @@ export default function HeroSection() {
         ref={constraintsRef}
         className="mx-4 flex h-screen items-center justify-center"
       >
-        <div className="relative flex max-w-2xl flex-col items-center gap-4 lg:max-w-7xl lg:gap-4 xl:shrink-0 xl:flex-row">
+        <div className="relative flex max-w-xl flex-col items-center gap-4 md:max-w-2xl lg:gap-4 xl:max-w-7xl xl:shrink-0 xl:flex-row">
           <div className="absolute left-0 top-0 hidden h-full w-full xl:block">
             <div className="gradient-to-r absolute -left-6 -top-6 z-10 h-2 w-1/6 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
             <div className="absolute -left-6 -top-5 z-10 h-1/2 w-2 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
@@ -67,7 +67,7 @@ export default function HeroSection() {
                   a Web Developer
                 </span>{" "}
               </h1>
-              <p className="max-w-full text-xl/normal text-slate-500 lg:text-2xl/normal">
+              <p className="max-w-full text-xl/normal text-slate-500 md:text-2xl/normal">
                 I first started learning web development in 2022. Since then, I
                 have been constantly learning and exploring new technologies to
                 improve my skills. I am passionate about web development and am
