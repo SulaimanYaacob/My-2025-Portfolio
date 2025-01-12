@@ -20,6 +20,7 @@ export default function Header() {
             <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-indigo-600">
               A
             </p> */}
+
             <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-slate-900">
               M
             </p>

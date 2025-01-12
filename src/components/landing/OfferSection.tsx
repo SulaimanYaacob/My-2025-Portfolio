@@ -32,7 +32,7 @@ export default function OfferSection() {
   // const [displayBar, setDisplayBar] = useState(0);
 
   return (
-    <section className="flex h-screen w-full flex-col justify-center border-b-4 border-t-4 border-slate-900 bg-violet-300 py-12 text-center lg:h-fit">
+    <section className="flex h-screen w-full flex-col justify-center border-slate-900 bg-violet-300 py-12 text-center lg:h-fit">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 p-4">
         {/* <h1 className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text font-bold text-transparent lg:text-5xl"> */}
         <h1 className="text-4xl font-bold lg:text-5xl">

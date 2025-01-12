@@ -15,7 +15,7 @@ export default function HeroSection() {
     <div className="relative overflow-hidden dark:bg-slate-900">
       <LazyMotion features={domAnimation}>
         <m.div
-          className="absolute -right-36 -top-20 h-72 w-72 rounded border-4 border-slate-900 bg-[radial-gradient(#8b5cf6_1px,transparent_2px)] [background-position:4px_4px] [background-size:16px_16px] dark:border-violet-500"
+          className="absolute -right-36 -top-20 h-72 w-72 rounded border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-position:4px_4px] [background-size:16px_16px] dark:border-violet-500"
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
@@ -24,7 +24,7 @@ export default function HeroSection() {
           }}
         />
         <m.div
-          className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full border-4 border-slate-900 bg-[radial-gradient(#8b5cf6_1px,transparent_2px)] [background-position:-8px_8px] [background-size:16px_16px]"
+          className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-position:4px_4px] [background-size:16px_16px]"
           animate={{ rotate: 360 }}
           transition={{
             repeat: Infinity,
