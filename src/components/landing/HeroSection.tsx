@@ -1,15 +1,12 @@
 "use client";
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
-import { useRef } from "react";
 import Image from "next/image";
 
 //TODO Drag constraint
 
 //! inset-0 (absolute) // h-screen
 export default function HeroSection() {
-  const constraintsRef = useRef<HTMLDivElement>(null);
-
   return (
     // <div className="lg:py-54 mx-auto max-w-4xl bg-red-400 px-6 py-36 text-center">
     <div className="relative overflow-hidden dark:bg-slate-900">
@@ -34,17 +31,14 @@ export default function HeroSection() {
         />
       </LazyMotion>
 
-      <div
-        ref={constraintsRef}
-        className="mx-4 flex h-screen items-center justify-center"
-      >
+      <div className="mx-4 flex h-fit items-center justify-center py-12 md:h-screen md:py-0">
         <div className="relative flex max-w-xl flex-col items-center gap-4 md:max-w-2xl lg:gap-4 xl:max-w-7xl xl:shrink-0 xl:flex-row">
-          <div className="absolute left-0 top-0 hidden h-full w-full xl:block">
+          {/* <div className="absolute left-0 top-0 hidden h-full w-full xl:block">
             <div className="gradient-to-r absolute -left-6 -top-6 z-10 h-2 w-1/6 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
             <div className="absolute -left-6 -top-5 z-10 h-1/2 w-2 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
             <div className="absolute -bottom-6 -right-6 z-10 h-2 w-1/6 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
             <div className="w-w absolute -bottom-6 -right-6 z-10 h-1/2 w-2 border-slate-900 bg-violet-500 [box-shadow:4px_4px_0_0_#0f172a]" />
-          </div>
+          </div> */}
           <div className="relative mx-auto mt-20 h-full rounded border-2 border-slate-900 bg-slate-50 [box-shadow:4px_4px_0_0_#0f172a] lg:h-full lg:w-fit xl:mt-0">
             <Image
               fetchPriority="high"
