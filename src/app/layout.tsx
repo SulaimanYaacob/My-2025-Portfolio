@@ -1,4 +1,4 @@
-import MainLayout from "@/components/app-layout/MainLayout";
+import MainLayout from "@/components/app_layout/MainLayout";
 import type { Metadata } from "next";
 import { Cabin } from "next/font/google";
 import "./globals.css";

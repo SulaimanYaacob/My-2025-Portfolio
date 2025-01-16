@@ -1,9 +1,9 @@
-"use client";
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
 import Image from "next/image";
 
-//TODO Drag constraint
+//TODO add blurry background as lights
+//TODO Redesign the hero section
 
 //! inset-0 (absolute) // h-screen
 export default function HeroSection() {
@@ -45,7 +45,7 @@ export default function HeroSection() {
               priority
               src="https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="My image"
-              sizes="100vw"
+              sizes="70vw"
               // fill
               // style={{ objectFit: "contain" }}
               width={200}

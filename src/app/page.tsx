@@ -1,6 +1,7 @@
 import HeroIcons from "@/components/landing/HeroSection";
 import MyTechSection from "@/components/landing/MyTechSection";
 import OfferSection from "@/components/landing/OfferSection";
+import ProjectSection from "@/components/landing/ProjectSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroIcons />
       <OfferSection />
       <MyTechSection />
+      <ProjectSection />
     </main>
   );
 }
