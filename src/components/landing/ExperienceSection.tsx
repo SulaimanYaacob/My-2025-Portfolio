@@ -2,7 +2,6 @@
 
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
-import Image from "next/image";
 import NeoCard from "@/components/ui/NeoCard";
 import NeoTag from "@/components/ui/NeoTag";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -18,58 +17,26 @@ const typeVariant: Record<string, "violet" | "amber" | "neutral"> = {
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="relative overflow-hidden bg-white px-4 py-24 dark:bg-slate-950">
+    <section id="experience" className="relative overflow-hidden bg-[#071a35]/90 px-4 py-24">
       {/* Dot-grid texture */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.07] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.08]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.06]" />
 
       {/* Glow blobs */}
-      <div className="animate-glow pointer-events-none absolute bottom-1/3 left-1/4 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl" />
-      <div className="animate-glow pointer-events-none absolute right-1/3 top-1/4 h-48 w-48 rounded-full bg-amber-400/12 blur-3xl" style={{ animationDelay: "1.8s" }} />
+      <div className="animate-glow pointer-events-none absolute bottom-1/3 left-1/4 h-64 w-64 rounded-full bg-indigo-900/30 blur-3xl" />
+      <div className="animate-glow pointer-events-none absolute right-1/3 top-1/4 h-48 w-48 rounded-full bg-indigo-900/30 blur-3xl" style={{ animationDelay: "1.8s" }} />
 
-      {/* Doodle: RightArrow — top right */}
-      <div className="absolute right-16 top-20 hidden animate-float text-slate-900 dark:text-violet-300 lg:block">
+      {/* Doodle: RightArrow — mid right, violet glow */}
+      <div
+        className="absolute right-20 top-1/2 hidden -translate-y-1/2 animate-float text-violet-300 lg:block"
+        style={{ filter: "drop-shadow(0 0 6px rgba(124,58,237,0.5))" }}
+      >
         <RightArrow className="h-12 w-24" />
       </div>
 
-      {/* Doodle: FireDoodle — bottom left */}
-      <div className="absolute bottom-20 left-16 hidden animate-float-slow text-slate-900 dark:text-amber-400 lg:block">
+      {/* Doodle: FireDoodle — bottom right, amber pulse glow */}
+      <div className="absolute bottom-24 right-16 hidden animate-pulse-glow-amber text-amber-500 lg:block">
         <FireDoodle className="h-16 w-10" />
-      </div>
-
-      {/* Doodle: Trophy — top left */}
-      <div className="absolute left-16 top-16 hidden animate-float lg:block">
-        <Image
-          src="/doodles/misc/trophy.svg"
-          alt=""
-          aria-hidden="true"
-          width={64}
-          height={64}
-          className="opacity-65 dark:invert"
-        />
-      </div>
-
-      {/* Doodle: Coffee — bottom right */}
-      <div className="absolute bottom-20 right-20 hidden animate-float-delay lg:block">
-        <Image
-          src="/doodles/misc/coffee-cup-1.svg"
-          alt=""
-          aria-hidden="true"
-          width={52}
-          height={52}
-          className="opacity-60 dark:invert"
-        />
-      </div>
-
-      {/* Doodle: Arrow NE — mid right */}
-      <div className="absolute right-16 top-1/2 hidden -translate-y-1/2 animate-float-slow lg:block">
-        <Image
-          src="/doodles/arrows/arrow-ne.svg"
-          alt=""
-          aria-hidden="true"
-          width={40}
-          height={40}
-          className="opacity-50 dark:invert"
-        />
+        <span className="pointer-events-none absolute inset-0 rounded-full bg-amber-500/40 blur-xl" />
       </div>
 
       <div className="relative mx-auto max-w-4xl">
@@ -80,8 +47,8 @@ export default function ExperienceSection() {
 
         <LazyMotion features={domAnimation}>
           <div className="relative flex flex-col gap-0">
-            {/* Vertical line */}
-            <div className="absolute left-5 top-0 hidden h-full w-0.5 bg-slate-200 dark:bg-slate-700 md:block" />
+            {/* Vertical timeline line */}
+            <div className="absolute left-5 top-0 hidden h-full w-0.5 bg-violet-900/50 md:block" />
 
             {experienceList.map((exp, i) => (
               <m.div
@@ -93,15 +60,15 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-3 top-6 hidden h-4 w-4 rounded-full border-2 border-slate-900 bg-violet-600 dark:border-violet-400 md:block" />
+                <div className="absolute left-3 top-6 hidden h-4 w-4 rounded-full border-2 border-violet-400 bg-violet-600 md:block" />
 
                 <NeoCard interactive>
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50">
+                      <h3 className="text-xl font-bold text-slate-50">
                         {exp.role}
                       </h3>
-                      <p className="font-semibold text-violet-600 dark:text-violet-400">
+                      <p className="font-semibold text-violet-400">
                         {exp.company}
                       </p>
                     </div>
@@ -109,17 +76,17 @@ export default function ExperienceSection() {
                       <NeoTag variant={typeVariant[exp.type] ?? "neutral"}>
                         {exp.type}
                       </NeoTag>
-                      <span className="text-sm text-slate-500 dark:text-slate-400">
+                      <span className="text-sm text-slate-400">
                         {exp.period}
                       </span>
-                      <span className="text-sm text-slate-400 dark:text-slate-500">
+                      <span className="text-sm text-slate-500">
                         {exp.location}
                       </span>
                     </div>
                   </div>
                   <ul className="mt-4 space-y-1.5">
                     {exp.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2 text-slate-600 dark:text-slate-300">
+                      <li key={j} className="flex gap-2 text-slate-300">
                         <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-500" />
                         {b}
                       </li>
@@ -130,6 +97,13 @@ export default function ExperienceSection() {
             ))}
           </div>
         </LazyMotion>
+      </div>
+
+      {/* Wave divider → Tech section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 z-10 w-full overflow-hidden leading-none">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="block h-16 w-full" aria-hidden="true">
+          <path d="M0,32 C240,56 480,8 720,32 C960,56 1200,8 1440,32 L1440,64 L0,64 Z" fill="#061a2f" fillOpacity="0.9" />
+        </svg>
       </div>
     </section>
   );

@@ -8,7 +8,15 @@ import ContactSection from "@/components/landing/ContactSection";
 
 export default function Home() {
   return (
-    <main className="[&>*]:border-b-4 [&>*]:border-slate-900 dark:[&>*]:border-violet-900">
+    <main className="relative">
+      {/* Space-to-ocean narrative gradient — fixed, bleeds through semi-transparent sections */}
+      <div
+        className="pointer-events-none fixed inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, #030614 0%, #080f2a 15%, #071a35 30%, #061a2f 45%, #051423 60%, #040e1a 75%, #020810 100%)",
+        }}
+      />
       <HeroSection />
       <AboutSection />
       <ExperienceSection />

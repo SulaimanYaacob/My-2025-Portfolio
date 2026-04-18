@@ -5,6 +5,7 @@ type SectionHeadingProps = {
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  dotColor?: "violet" | "amber" | "cyan";
 };
 
 export default function SectionHeading({
@@ -12,7 +13,14 @@ export default function SectionHeading({
   subtitle,
   align = "left",
   className,
+  dotColor = "violet",
 }: SectionHeadingProps) {
+  const dotClass = {
+    violet: "bg-violet-600",
+    amber: "bg-amber-500",
+    cyan: "bg-cyan-400",
+  }[dotColor];
+
   return (
     <div
       className={twMerge(
@@ -23,7 +31,7 @@ export default function SectionHeading({
     >
       <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-50 md:text-5xl">
         {title}
-        <span className="ml-2 inline-block h-3 w-3 rounded-full bg-violet-600" />
+        <span className={twMerge("ml-2 inline-block h-3 w-3 rounded-full", dotClass)} />
       </h2>
       {subtitle && (
         <p className="max-w-2xl text-lg text-slate-500 dark:text-slate-400">

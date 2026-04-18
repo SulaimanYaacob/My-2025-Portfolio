@@ -7,66 +7,40 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NeoCard from "@/components/ui/NeoCard";
 import NeoTag from "@/components/ui/NeoTag";
 import SectionHeading from "@/components/ui/SectionHeading";
-import BotFace from "@/components/doodles/BotFace";
-import Squiggle from "@/components/doodles/Squiggle";
+import DoodleDecor from "@/components/ui/DoodleDecor";
 import { projectList } from "@/app/data/portfolioData";
 
 export default function ProjectSection() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-white px-4 py-24 dark:bg-slate-950"
+      className="relative overflow-hidden bg-[#051423]/90 px-4 py-24"
     >
-      {/* Dot-grid texture */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.07] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.08]" />
+      {/* Dot-grid texture — deeper cyan */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0891b2_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.06]" />
 
-      {/* Glow blobs */}
-      <div className="animate-glow pointer-events-none absolute right-1/4 top-1/3 h-72 w-72 rounded-full bg-violet-500/15 blur-3xl" />
-      <div className="animate-glow pointer-events-none absolute bottom-1/4 left-1/3 h-56 w-56 rounded-full bg-amber-400/12 blur-3xl" style={{ animationDelay: "2s" }} />
+      {/* Glow blobs — teal/ocean palette */}
+      <div className="animate-glow pointer-events-none absolute right-1/4 top-1/3 h-72 w-72 rounded-full bg-teal-900/20 blur-3xl" />
+      <div className="animate-glow pointer-events-none absolute bottom-1/4 left-1/3 h-56 w-56 rounded-full bg-violet-900/15 blur-3xl" style={{ animationDelay: "2s" }} />
 
-      {/* Doodle: BotFace — top right */}
-      <div className="absolute right-14 top-16 hidden animate-float text-slate-900 dark:text-violet-300 lg:block">
-        <BotFace className="h-14 w-20" />
-      </div>
-
-      {/* Doodle: Squiggle — bottom left */}
-      <div className="absolute bottom-20 left-14 hidden animate-float-slow text-slate-900 dark:text-amber-300 lg:block">
-        <Squiggle className="h-10 w-24" />
-      </div>
-
-      {/* Doodle: Crown — top left */}
-      <div className="absolute left-16 top-16 hidden animate-float lg:block">
-        <Image
-          src="/doodles/objects/crown.svg"
-          alt=""
-          aria-hidden="true"
-          width={56}
-          height={56}
-          className="opacity-65 dark:invert"
-        />
-      </div>
-
-      {/* Doodle: Rocket — bottom right */}
-      <div className="absolute bottom-20 right-20 hidden animate-float-delay-2 lg:block">
-        <Image
+      {/* Doodle: Rocket — top right, amber glow */}
+      <div className="absolute right-16 top-16 hidden animate-float-delay lg:block">
+        <DoodleDecor
           src="/doodles/misc/rocket.svg"
-          alt=""
-          aria-hidden="true"
-          width={72}
-          height={72}
-          className="rotate-12 opacity-60 dark:invert"
+          size={68}
+          rotate={20}
+          opacity={70}
+          glowColor="#f59e0b"
         />
       </div>
 
-      {/* Doodle: Bulb — mid right */}
-      <div className="absolute right-14 top-1/2 hidden -translate-y-1/2 animate-wiggle lg:block">
-        <Image
-          src="/doodles/interface/bulb.svg"
-          alt=""
-          aria-hidden="true"
-          width={44}
-          height={44}
-          className="opacity-55 dark:invert"
+      {/* Doodle: Camera — bottom left, cyan glow */}
+      <div className="absolute bottom-24 left-16 hidden animate-float-slow lg:block">
+        <DoodleDecor
+          src="/doodles/objects/camera.svg"
+          size={56}
+          opacity={65}
+          glowColor="#22d3ee"
         />
       </div>
 
@@ -85,7 +59,7 @@ export default function ProjectSection() {
               >
                 <NeoCard size="sm" interactive className="flex h-full flex-col gap-4">
                   {/* Image */}
-                  <div className="relative h-48 w-full overflow-hidden rounded border-2 border-slate-900 dark:border-violet-400">
+                  <div className="relative h-48 w-full overflow-hidden rounded border-2 border-violet-400">
                     <Image
                       priority={i < 2}
                       sizes="(max-width: 1200px) 50vw, 33vw"
@@ -98,7 +72,7 @@ export default function ProjectSection() {
                       alt={project.name}
                     />
                     {project.highlight && (
-                      <span className="absolute right-2 top-2 rounded border-2 border-slate-900 bg-amber-400 px-2 py-0.5 text-xs font-bold dark:border-violet-400">
+                      <span className="absolute right-2 top-2 rounded border-2 border-violet-400 bg-amber-400 px-2 py-0.5 text-xs font-bold">
                         Featured
                       </span>
                     )}
@@ -106,10 +80,10 @@ export default function ProjectSection() {
 
                   {/* Content */}
                   <div className="flex flex-1 flex-col gap-3">
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+                    <h3 className="text-2xl font-bold text-slate-50">
                       {project.name}
                     </h3>
-                    <p className="flex-1 text-slate-600 dark:text-slate-300">
+                    <p className="flex-1 text-slate-300">
                       {project.desc ||
                         "A full-stack web application built with modern technologies."}
                     </p>
@@ -129,7 +103,7 @@ export default function ProjectSection() {
                             href={project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-violet-600 dark:text-slate-300 dark:hover:text-violet-400"
+                            className="flex items-center gap-1.5 text-sm font-semibold text-slate-300 hover:text-violet-400"
                           >
                             <FaGithub /> Code
                           </a>
@@ -139,7 +113,7 @@ export default function ProjectSection() {
                             href={project.links.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-amber-600 dark:text-slate-300 dark:hover:text-amber-400"
+                            className="flex items-center gap-1.5 text-sm font-semibold text-slate-300 hover:text-amber-400"
                           >
                             <FaExternalLinkAlt /> Live
                           </a>
@@ -152,6 +126,13 @@ export default function ProjectSection() {
             ))}
           </div>
         </LazyMotion>
+      </div>
+
+      {/* Wave divider → Education section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 z-10 w-full overflow-hidden leading-none">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="block h-16 w-full" aria-hidden="true">
+          <path d="M0,32 C240,56 480,8 720,32 C960,56 1200,8 1440,32 L1440,64 L0,64 Z" fill="#040e1a" fillOpacity="0.9" />
+        </svg>
       </div>
     </section>
   );

@@ -3,15 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc; /* slate-50 */
-  --foreground: #0f172a; /* slate-900 */
+  --background: #030614;
+  --foreground: #f8fafc;
 }
 
 .dark {
-  --background: #0f172a; /* slate-900 */
-  --foreground: #f8fafc; /* slate-50 */
+  --background: #030614;
+  --foreground: #f8fafc;
+}
+
+.light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #030614;
 }

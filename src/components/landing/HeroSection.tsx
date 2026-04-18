@@ -7,7 +7,7 @@ import Link from "next/link";
 import NeoButton from "@/components/ui/NeoButton";
 import Star from "@/components/doodles/Star";
 import Lightning from "@/components/doodles/Lightning";
-import Balloon from "@/components/doodles/Balloon";
+import DoodleDecor from "@/components/ui/DoodleDecor";
 import { personalInfo } from "@/app/data/portfolioData";
 
 gsap.registerPlugin(useGSAP);
@@ -16,7 +16,6 @@ export default function HeroSection() {
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.15 });
 
-    // 1. Entrance Sequence
     tl.from(".hero-badge", {
       y: -30,
       opacity: 0,
@@ -63,7 +62,6 @@ export default function HeroSection() {
         "-=0.5",
       );
 
-    // 2. Continuous "Alive" Floating Animation for Doodles
     gsap.to(".doodle-float", {
       y: "random(-20, 20)",
       x: "random(-10, 10)",
@@ -75,7 +73,6 @@ export default function HeroSection() {
       stagger: { amount: 2 },
     });
 
-    // 3. Subtle "breathing" for corner accents
     gsap.to(".corner-accent", {
       scale: 1.05,
       duration: 3,
@@ -86,77 +83,77 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-900">
-      {/* Background Texture */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.07] [background-size:28px_28px] dark:bg-[radial-gradient(#7c3aed_1px,transparent_1px)] dark:opacity-[0.09]" />
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Star field — small white dots */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.06]" />
 
-      {/* --- CORNER ACCENTS --- */}
-      <div className="corner-accent absolute right-0 top-0 h-48 w-48 rounded-bl-lg border-b-4 border-l-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] transition-all duration-500 [background-position:4px_4px] [background-size:16px_16px] hover:h-64 hover:w-64 dark:border-violet-400 dark:bg-[radial-gradient(#7c3aed_1px,transparent_2px)]" />
+      {/* Constellation layer — sparse violet clusters */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#a78bfa_1.5px,transparent_1.5px)] [background-size:88px_88px] opacity-[0.08]" />
 
-      <div className="corner-accent absolute bottom-0 left-0 h-32 w-32 rounded-tr-lg border-r-4 border-t-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] transition-all duration-500 [background-position:4px_4px] [background-size:16px_16px] hover:h-48 hover:w-48 dark:border-violet-400 dark:bg-[radial-gradient(#7c3aed_1px,transparent_2px)]" />
+      {/* Corner accents */}
+      <div className="corner-accent absolute right-0 top-0 h-48 w-48 rounded-bl-lg border-b-4 border-l-4 border-violet-400 bg-[radial-gradient(#7c3aed_1px,transparent_2px)] transition-all duration-500 [background-position:4px_4px] [background-size:16px_16px] hover:h-64 hover:w-64" />
+      <div className="corner-accent absolute bottom-0 left-0 h-32 w-32 rounded-tr-lg border-r-4 border-t-4 border-violet-400 bg-[radial-gradient(#7c3aed_1px,transparent_2px)] transition-all duration-500 [background-position:4px_4px] [background-size:16px_16px] hover:h-48 hover:w-48" />
 
-      {/* Ambient Glow */}
-      <div className="pointer-events-none absolute left-1/3 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-violet-500/15 blur-3xl dark:bg-violet-500/20" />
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute left-1/3 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-violet-700/15 blur-3xl" />
 
-      {/* --- FLOATING DOODLES --- */}
-      <div className="doodle-pop doodle-float absolute left-16 top-28 hidden text-slate-900 lg:block dark:text-amber-300">
-        <Balloon className="h-24 w-14 drop-shadow-lg" />
-      </div>
-
-      <div className="doodle-pop doodle-float absolute bottom-28 right-24 hidden text-slate-900 lg:block dark:text-amber-400">
-        <Lightning className="h-20 w-14 drop-shadow-lg" />
-      </div>
-
-      <div className="doodle-pop doodle-float absolute bottom-24 left-36 hidden lg:block">
-        <Image
-          src="/doodles/misc/rocket.svg"
-          alt=""
-          aria-hidden="true"
-          width={72}
-          height={72}
-          className="rotate-45 opacity-70 dark:invert"
-        />
-      </div>
-
-      <div className="doodle-pop absolute right-52 top-20 hidden animate-spin-very-slow lg:block">
+      {/* Doodle: Satellite — top right, slow orbit */}
+      <div className="doodle-pop absolute right-52 top-20 hidden animate-orbit-slow lg:block">
         <Image
           src="/doodles/misc/satellite.svg"
           alt=""
           aria-hidden="true"
           width={48}
           height={48}
-          className="opacity-55 dark:invert"
+          style={{ filter: "invert(1) sepia(1) saturate(2) hue-rotate(170deg)", opacity: 0.7 }}
         />
       </div>
 
-      {/* --- MAIN CONTENT --- */}
+      {/* Doodle: Rocket — bottom left, float with amber glow */}
+      <div className="doodle-pop doodle-float absolute bottom-24 left-36 hidden lg:block">
+        <DoodleDecor
+          src="/doodles/misc/rocket.svg"
+          size={72}
+          rotate={-45}
+          opacity={70}
+          glowColor="#f59e0b"
+        />
+      </div>
+
+      {/* Doodle: Lightning — bottom right, amber pulse glow */}
+      <div className="doodle-pop doodle-float absolute bottom-28 right-24 hidden animate-pulse-glow-amber text-amber-400 lg:block">
+        <Lightning className="h-20 w-14" />
+        <span className="pointer-events-none absolute inset-0 rounded-full bg-amber-400/60 blur-xl" />
+      </div>
+
+      {/* Main content */}
       <div className="mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 xl:py-0">
         <div className="flex w-full flex-col items-center gap-16 xl:flex-row xl:items-center xl:justify-between">
-          {/* Text Content */}
+          {/* Text content */}
           <div className="flex max-w-xl flex-col items-center gap-6 text-center xl:items-start xl:text-left">
-            <div className="hero-badge inline-flex items-center gap-2 rounded border-2 border-slate-900 bg-amber-400 px-3 py-1.5 text-sm font-bold shadow-[4px_4px_0_0_#0f172a] dark:border-violet-400 dark:bg-amber-500 dark:shadow-[4px_4px_0_0_#7c3aed]">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-green-600 dark:bg-green-400" />
+            <div className="hero-badge inline-flex items-center gap-2 rounded border-2 border-violet-400 bg-amber-500 px-3 py-1.5 text-sm font-bold shadow-[4px_4px_0_0_#7c3aed]">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
               Available for work
             </div>
 
-            <h1 className="hero-name text-6xl font-black leading-none tracking-tight text-slate-900 md:text-7xl xl:text-8xl dark:text-slate-50">
+            <h1 className="hero-name text-6xl font-black leading-none tracking-tight text-slate-50 md:text-7xl xl:text-8xl">
               Sulaiman
               <br />
               <span className="relative mt-2 inline-block">
                 Yaacob
-                <span className="absolute -bottom-2 left-0 -z-10 h-4 w-full skew-x-[-6deg] bg-amber-400/80 dark:bg-amber-500/60" />
+                <span className="absolute -bottom-2 left-0 -z-10 h-4 w-full skew-x-[-6deg] bg-amber-500/60" />
               </span>
             </h1>
 
             <p className="hero-role text-2xl font-bold md:text-3xl xl:text-4xl">
-              <span className="bg-gradient-to-r from-violet-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-400 to-amber-400 bg-clip-text text-transparent">
                 Full-Stack Developer
               </span>
             </p>
 
-            <p className="hero-tagline max-w-md text-lg leading-relaxed text-slate-500 dark:text-slate-400">
+            <p className="hero-tagline max-w-md text-lg leading-relaxed text-slate-400">
               Turning complex problems into clean, scalable software.
-              <span className="block font-medium text-slate-700 dark:text-slate-300">
+              <span className="block font-medium text-slate-300">
                 Building for the web since 2022.
               </span>
             </p>
@@ -175,7 +172,7 @@ export default function HeroSection() {
                 <NeoButton
                   variant="ghost"
                   size="lg"
-                  className="transition-colors hover:bg-slate-200 dark:hover:bg-slate-800"
+                  className="transition-colors hover:bg-slate-800"
                 >
                   Contact Me
                 </NeoButton>
@@ -183,10 +180,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Photo Section */}
+          {/* Photo */}
           <div className="hero-photo-wrapper group relative flex-shrink-0">
             <div className="relative -rotate-3 transition-transform duration-500 group-hover:rotate-0">
-              <div className="rounded border-4 border-slate-900 bg-slate-50 p-3 shadow-[12px_12px_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:shadow-[12px_12px_0_0_#7c3aed]">
+              <div className="rounded border-4 border-violet-400 bg-slate-800 p-3 shadow-[12px_12px_0_0_#7c3aed]">
                 <Image
                   priority
                   src={personalInfo.avatar}
@@ -197,14 +194,21 @@ export default function HeroSection() {
                 />
               </div>
 
-              {/* Star Doodle attached to the photo */}
+              {/* Star doodle on photo */}
               <span className="doodle-pop absolute -right-8 -top-8 transition-transform duration-300 group-hover:scale-125">
-                <Star className="animate-spin-slow h-12 w-12 text-amber-400 dark:invert" />
-                <span className="pointer-events-none absolute inset-0 animate-pulse rounded-full bg-amber-400/40 blur-xl" />
+                <Star className="h-12 w-12 animate-twinkle text-amber-400" />
+                <span className="pointer-events-none absolute inset-0 animate-pulse rounded-full bg-amber-400/60 blur-xl" />
               </span>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Wave divider → About section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 z-10 w-full overflow-hidden leading-none">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="block h-16 w-full" aria-hidden="true">
+          <path d="M0,32 C240,56 480,8 720,32 C960,56 1200,8 1440,32 L1440,64 L0,64 Z" fill="#080f2a" fillOpacity="0.9" />
+        </svg>
       </div>
     </section>
   );

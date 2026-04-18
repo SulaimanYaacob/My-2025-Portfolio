@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={cabin.className} lang="en">
+    <html className={`${cabin.className} dark`} lang="en" suppressHydrationWarning>
       <body>
         <MainLayout>{children}</MainLayout>
       </body>

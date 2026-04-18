@@ -6,6 +6,7 @@ type DoodleDecorProps = {
   rotate?: number;
   className?: string;
   opacity?: number;
+  glowColor?: string;
 };
 
 export default function DoodleDecor({
@@ -14,6 +15,7 @@ export default function DoodleDecor({
   rotate = 0,
   opacity = 60,
   className,
+  glowColor,
 }: DoodleDecorProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -23,13 +25,13 @@ export default function DoodleDecor({
       aria-hidden="true"
       width={size}
       height={size}
-      className={twMerge(
-        "pointer-events-none select-none dark:invert",
-        className,
-      )}
+      className={twMerge("pointer-events-none select-none", className)}
       style={{
         transform: rotate ? `rotate(${rotate}deg)` : undefined,
         opacity: opacity / 100,
+        filter: glowColor
+          ? `drop-shadow(0 0 6px ${glowColor}) drop-shadow(0 0 14px ${glowColor}50)`
+          : undefined,
       }}
     />
   );

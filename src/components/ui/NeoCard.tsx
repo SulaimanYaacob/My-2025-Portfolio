@@ -21,7 +21,7 @@ export default function NeoCard({
   return (
     <div
       className={twMerge(
-        "rounded border-2 border-slate-900 bg-slate-50 dark:border-violet-400 dark:bg-slate-800",
+        "rounded border-2 border-slate-900 bg-slate-50 dark:border-violet-400 dark:bg-slate-900/70 dark:backdrop-blur-sm",
         padding,
         shadow,
         interactive &&
