@@ -52,7 +52,7 @@ export default function ExperienceSection() {
                 <div className="absolute left-3 top-6 hidden h-4 w-4 rounded-full border-2 border-slate-900 bg-violet-600 md:block dark:border-violet-400" />
 
                 <NeoCard interactive>
-                  <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div className="flex flex-col flex-wrap items-start justify-between gap-2 sm:flex-row">
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50">
                         {exp.role}
@@ -61,7 +61,7 @@ export default function ExperienceSection() {
                         {exp.company}
                       </p>
                     </div>
-                    <div className="flex flex-col items-end gap-1">
+                    <div className="flex flex-col items-start gap-1 sm:items-end">
                       <NeoTag variant={typeVariant[exp.type] ?? "neutral"}>
                         {exp.type}
                       </NeoTag>

@@ -6,60 +6,101 @@ import { TechItem, techList } from "@/app/data/portfolioData";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
+  // Logic for 3-2-3-2 sequence based on a 12-column grid
+  // Rows of 5: [0,1,2] = 3 items | [3,4] = 2 items
+  const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
+
   return (
     <LazyMotion features={domAnimation}>
       <m.div
         initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: (index + 1) * 0.08 }}
-        className={`flex gap-2 p-2 ${
-          index % 5 < 3 ? "col-span-2 w-full" : "col-span-3 lg:w-96"
-        } z-10 border-2 border-slate-900 bg-white transition-all ease-out [box-shadow:4px_4px_0_0_#0f172a] hover:!scale-110 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed]`}
+        transition={{ duration: 0.3, delay: (index + 1) * 0.05 }}
+        className={`z-10 col-span-4 flex items-center justify-center border-2 border-slate-900 bg-white p-3 transition-all ease-out [box-shadow:4px_4px_0_0_#0f172a] hover:!scale-105 sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} gap-0 sm:gap-3`}
       >
-        <div className="m-auto flex h-full items-center">
-          {tech.icon && tech.icon}
+        <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
+          {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
           {tech.image && (
-            <div className="relative z-10 h-[30px] w-[30px]">
-              <Image
-                className="absolute select-none object-contain"
-                src={tech.image}
-                fill
-                alt=""
-              />
-            </div>
+            <Image
+              src={tech.image}
+              alt={tech.name}
+              fill
+              className="select-none object-contain"
+              sizes="40px"
+            />
           )}
         </div>
-        <div className="my-auto hidden w-full text-xl md:block lg:text-3xl dark:text-slate-50">
-          <p>{tech.name}</p>
+
+        {/* Text is hidden on small screens, shown from 'sm' up */}
+        <div className="hidden min-w-0 flex-1 sm:block">
+          <p className="truncate text-sm font-bold uppercase tracking-tight md:text-base dark:text-slate-50">
+            {tech.name}
+          </p>
         </div>
       </m.div>
     </LazyMotion>
   );
 };
 
+const TechTrace = ({
+  color,
+  className,
+  delay = 0,
+}: {
+  color: string;
+  className: string;
+  delay?: number;
+}) => (
+  <svg
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+    className={`pointer-events-none absolute opacity-20 dark:opacity-40 ${className}`}
+  >
+    <m.path
+      d="M0 0 L100 100 M20 0 L120 100"
+      fill="none"
+      stroke={color}
+      strokeWidth="0.5"
+      initial={{ pathLength: 0, opacity: 0 }}
+      animate={{ pathLength: 1, opacity: [0, 1, 0] }}
+      transition={{ duration: 4, repeat: Infinity, delay, ease: "linear" }}
+    />
+  </svg>
+);
+
 export default function MyTechSection() {
   return (
     <section
       id="skills"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900"
+      className="relative grid min-h-screen w-full place-items-center overflow-hidden bg-slate-50 dark:bg-slate-900"
     >
-      {/* Dot-grid texture */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.08] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.09]" />
 
-      <div className="relative z-0 mx-4 flex max-w-xs flex-col gap-8 py-24 md:max-w-7xl">
+      <div className="relative z-0 mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 py-24">
         <SectionHeading
           title="Tools I Use"
           subtitle="Technologies I'm familiar with across the full stack"
           align="center"
         />
-        <div className="relative z-0 grid grid-cols-6 gap-6">
-          {/* Animated violet glow blob */}
-          <div className="pointer-events-none absolute inset-0 m-auto h-[80%] w-[80%] animate-glow rounded-full bg-violet-500/20 blur-3xl transition-all" />
-          <div
-            className="pointer-events-none absolute right-0 top-0 h-48 w-48 animate-glow rounded-full bg-amber-400/15 blur-3xl"
-            style={{ animationDelay: "1.3s" }}
+
+        <div className="relative z-0 grid grid-cols-12 gap-4 sm:gap-6">
+          <div className="absolute inset-0 z-[-1] flex items-center justify-center">
+            <div className="h-[120%] w-[1px] rotate-45 bg-gradient-to-b from-transparent via-violet-500/50 to-transparent" />
+            <div className="h-[120%] w-[1px] -rotate-45 bg-gradient-to-b from-transparent via-violet-500/50 to-transparent" />
+          </div>
+
+          <TechTrace
+            color="#8b5cf6"
+            className="left-0 top-0 h-full w-1/2"
+            delay={0}
           />
+          <TechTrace
+            color="#fbbf24"
+            className="bottom-0 right-0 h-full w-1/3"
+            delay={2}
+          />
+
           {techList.map((tech, index) => (
             <MyTechCard key={tech.id} tech={tech} index={index} />
           ))}
