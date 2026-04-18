@@ -1,6 +1,7 @@
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
 import Image from "next/image";
+import Star from "../doodles/Star";
 
 //TODO add blurry background as lights
 //TODO Redesign the hero section
@@ -10,6 +11,12 @@ export default function HeroSection() {
   return (
     // <div className="lg:py-54 mx-auto max-w-4xl bg-red-400 px-6 py-36 text-center">
     <div className="relative overflow-hidden dark:bg-slate-900">
+      <span className="absolute right-52 top-52 z-0 flex rotate-45 items-center justify-center">
+        <Star className="z-10 border-black stroke-amber-500 stroke-2" />
+        <div className="absolute h-32 w-32 rounded-full bg-yellow-500/50 blur-2xl" />
+      </span>
+      <Star className="absolute inset-32 border-black stroke-amber-500 stroke-2" />
+      <Star className="absolute inset-36 border-black stroke-amber-500 stroke-2" />
       <LazyMotion features={domAnimation}>
         <m.div
           className="absolute -right-36 -top-20 h-72 w-72 rounded border-4 border-slate-900 bg-[radial-gradient(#0f172a_1px,transparent_2px)] [background-position:4px_4px] [background-size:16px_16px] dark:border-violet-500"
@@ -30,7 +37,6 @@ export default function HeroSection() {
           }}
         />
       </LazyMotion>
-
       <div className="mx-4 flex h-fit items-center justify-center py-12 md:h-screen md:py-0">
         <div className="relative flex max-w-xl flex-col items-center gap-4 md:max-w-2xl lg:gap-4 xl:max-w-7xl xl:shrink-0 xl:flex-row">
           {/* <div className="absolute left-0 top-0 hidden h-full w-full xl:block">
@@ -57,7 +63,7 @@ export default function HeroSection() {
             <div className="flex flex-col gap-4">
               <h1 className="text-3xl/normal font-bold md:text-4xl/normal xl:text-5xl/normal">
                 Hi! I&apos;m Sulaiman,{" "}
-                <span className="inline-block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                <span className="inline-block bg-gradient-to-r from-violet-600 to-amber-600 bg-clip-text text-transparent">
                   a Web Developer
                 </span>{" "}
               </h1>
