@@ -54,13 +54,18 @@ export default function AboutSection() {
                 <div className="relative h-full min-h-[400px] w-full">
                   {" "}
                   {/* Container for Next.js Image */}
-                  <Image
-                    src={personalInfo.avatar}
-                    alt="Sulaiman Yaacob"
-                    fill // Use fill to take up the parent container's space
-                    className="rounded object-cover" // object-cover prevents stretching distortion
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                  />
+                  <div className="relative h-[400px] w-full">
+                    {" "}
+                    {/* Set your desired height/width here */}
+                    <Image
+                      src={personalInfo.avatar}
+                      alt="Sulaiman Yaacob"
+                      fill
+                      className="rounded object-cover"
+                      sizes="(max-width: 1024px) 100vw, 400px"
+                      priority // Good practice for avatars/hero images
+                    />
+                  </div>
                 </div>
               </NeoCard>
             </m.div>

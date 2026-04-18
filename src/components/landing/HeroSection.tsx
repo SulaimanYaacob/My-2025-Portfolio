@@ -46,18 +46,6 @@ export default function HeroSection() {
         },
         "-=0.8",
       );
-
-    // Alive animation
-    gsap.to(".doodle-float", {
-      y: "random(-20, 20)",
-      x: "random(-10, 10)",
-      rotation: "random(-8, 8)",
-      duration: "random(2.5, 5)",
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      stagger: { amount: 2 },
-    });
   }, []);
 
   return (
@@ -131,7 +119,8 @@ export default function HeroSection() {
                   alt="Sulaiman Yaacob"
                   width={320}
                   height={400}
-                  className="rounded object-cover grayscale-[20%] transition-all duration-500 group-hover:grayscale-0"
+                  // Added 'h-auto' and 'w-full' for responsive scaling while keeping the ratio
+                  className="h-auto w-full rounded object-cover grayscale-[20%] transition-all duration-500 group-hover:grayscale-0"
                 />
               </div>
             </div>
