@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Set The Text Color To Black */
+:root {
+  --background: #f8fafc; /* slate-50 */
+  --foreground: #0f172a; /* slate-900 */
+}
+
+.dark {
+  --background: #0f172a; /* slate-900 */
+  --foreground: #f8fafc; /* slate-50 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
