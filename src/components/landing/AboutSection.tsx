@@ -31,8 +31,6 @@ export default function AboutSection() {
       id="about"
       className="relative overflow-hidden bg-slate-50 px-4 py-24 dark:bg-slate-900"
     >
-      {/* ... (background and doodles remain the same) */}
-
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           title="About Me"

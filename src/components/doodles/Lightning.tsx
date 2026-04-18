@@ -16,7 +16,6 @@ const Lightning = ({ className }: LightningProps) => {
       >
         <path
           d="M38 4L12 48H26L14 96L52 44H37L38 4Z"
-          fill="currentColor"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinejoin="round"
