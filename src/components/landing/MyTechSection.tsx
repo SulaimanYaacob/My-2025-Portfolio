@@ -2,30 +2,20 @@
 import * as m from "motion/react-m";
 import { domAnimation, LazyMotion } from "motion/react";
 import Image from "next/image";
-import { MyTech, myTechList } from "@/app/data/myTechList";
+import { TechItem, techList } from "@/app/data/portfolioData";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-//TODO add an animation text when hover in small breakpoints
-const MyTechCard = ({ tech, index }: { tech: MyTech; index: number }) => {
+const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   return (
-    <LazyMotion key={tech.id} features={domAnimation}>
+    <LazyMotion features={domAnimation}>
       <m.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
-        whileInView={{
-          y: [-300, 0],
-          opacity: [0, 1],
-          x: index % 2 === 0 ? [-100, 0] : [100, 0],
-        }}
-        transition={{
-          duration: 0.3,
-          // delay: (myTechList.length - index - 1) * 0.1 + 1,
-          delay: (index + 1) * 0.1,
-        }}
-        onAnimationComplete={() => {}}
-        animate={{ rotate: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: (index + 1) * 0.08 }}
         className={`flex gap-2 p-2 ${
           index % 5 < 3 ? "col-span-2 w-full" : "col-span-3 lg:w-96"
-        } z-10 border-2 border-slate-900 bg-white transition-all ease-out [box-shadow:4px_4px_0_0_#0f172a] hover:!scale-110`} //hover in tailwind is not affected by delay. onAnimationComplete is not suitable for this case
+        } z-10 border-2 border-slate-900 bg-white transition-all ease-out [box-shadow:4px_4px_0_0_#0f172a] hover:!scale-110 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed]`}
       >
         <div className="m-auto flex h-full items-center">
           {tech.icon && tech.icon}
@@ -34,15 +24,13 @@ const MyTechCard = ({ tech, index }: { tech: MyTech; index: number }) => {
               <Image
                 className="absolute select-none object-contain"
                 src={tech.image}
-                // width={38}
-                // height={38}
                 fill
-                alt={""}
+                alt=""
               />
             </div>
           )}
         </div>
-        <div className="my-auto hidden w-full text-xl md:block lg:text-3xl">
+        <div className="my-auto hidden w-full text-xl md:block lg:text-3xl dark:text-slate-50">
           <p>{tech.name}</p>
         </div>
       </m.div>
@@ -52,15 +40,27 @@ const MyTechCard = ({ tech, index }: { tech: MyTech; index: number }) => {
 
 export default function MyTechSection() {
   return (
-    <section className="flex h-screen w-full items-center justify-center">
-      <div className="mx-4 flex max-w-xs flex-col gap-8 py-12 md:max-w-7xl">
-        <h1 className="mx-10 text-center text-4xl font-bold lg:text-5xl">
-          Tools I&apos;m Familiar With
-        </h1>
+    <section
+      id="skills"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900"
+    >
+      {/* Dot-grid texture */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.08] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.09]" />
 
+      <div className="relative z-0 mx-4 flex max-w-xs flex-col gap-8 py-24 md:max-w-7xl">
+        <SectionHeading
+          title="Tools I Use"
+          subtitle="Technologies I'm familiar with across the full stack"
+          align="center"
+        />
         <div className="relative z-0 grid grid-cols-6 gap-6">
-          <div className="absolute inset-0 m-auto h-[100%] w-[100%] rounded-full bg-violet-500/30 blur-3xl transition-all" />
-          {myTechList.map((tech, index) => (
+          {/* Animated violet glow blob */}
+          <div className="pointer-events-none absolute inset-0 m-auto h-[80%] w-[80%] animate-glow rounded-full bg-violet-500/20 blur-3xl transition-all" />
+          <div
+            className="pointer-events-none absolute right-0 top-0 h-48 w-48 animate-glow rounded-full bg-amber-400/15 blur-3xl"
+            style={{ animationDelay: "1.3s" }}
+          />
+          {techList.map((tech, index) => (
             <MyTechCard key={tech.id} tech={tech} index={index} />
           ))}
         </div>
