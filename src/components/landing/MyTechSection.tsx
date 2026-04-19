@@ -6,8 +6,6 @@ import { TechItem, techList } from "@/app/data/portfolioData";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
-  // Logic for 3-2-3-2 sequence based on a 12-column grid
-  // Rows of 5: [0,1,2] = 3 items | [3,4] = 2 items
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
   return (
@@ -16,8 +14,32 @@ const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
         initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: (index + 1) * 0.05 }}
-        className={`z-10 col-span-4 flex items-center justify-center border-2 border-slate-900 bg-white p-3 transition-all ease-out [box-shadow:4px_4px_0_0_#0f172a] hover:!scale-105 sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} gap-0 sm:gap-3`}
+        // THE "CLICKY" HOVER LOGIC
+        whileHover={{
+          x: 4, // Moves right to meet the shadow
+          y: 4, // Moves down to meet the shadow
+          boxShadow: "0px 0px 0px 0px #0f172a", // Shadow "disappears" as card covers it
+        }}
+        // Add a slight dark mode variant for the shadow in the hover state
+        // if your dark mode uses a different shadow color (#7c3aed)
+        variants={{
+          hover: {
+            x: 4,
+            y: 4,
+            boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
+          },
+        }}
+        transition={{
+          type: "spring", // Spring makes it feel more "physical" than linear
+          stiffness: 400,
+          damping: 25,
+          opacity: { duration: 0.3, delay: (index + 1) * 0.05 },
+          // The click movement should be very fast
+          x: { duration: 0.1 },
+          y: { duration: 0.1 },
+          boxShadow: { duration: 0.1 },
+        }}
+        className={`/* Remove to prevent conflict with Framer Motion */ z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-colors [box-shadow:4px_4px_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} gap-0 sm:gap-3`}
       >
         <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
           {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
@@ -32,7 +54,6 @@ const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
           )}
         </div>
 
-        {/* Text is hidden on small screens, shown from 'sm' up */}
         <div className="hidden min-w-0 flex-1 sm:block">
           <p className="truncate text-sm font-bold uppercase tracking-tight md:text-base dark:text-slate-50">
             {tech.name}

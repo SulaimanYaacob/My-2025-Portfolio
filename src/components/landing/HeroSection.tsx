@@ -90,11 +90,7 @@ export default function HeroSection() {
 
             <div className="hero-cta invisible flex flex-wrap items-center justify-center gap-4 xl:justify-start">
               <Link href="#projects">
-                <NeoButton
-                  variant="primary"
-                  size="lg"
-                  className="transition-transform hover:scale-105"
-                >
+                <NeoButton variant="primary" size="lg">
                   View Projects
                 </NeoButton>
               </Link>
