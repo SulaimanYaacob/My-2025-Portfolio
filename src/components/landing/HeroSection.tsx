@@ -94,21 +94,18 @@ export default function HeroSection() {
                   View Projects
                 </NeoButton>
               </Link>
-              <button
+              <NeoButton
+                variant="ghost"
+                size="lg"
+                className="hover:bg-slate-200 dark:hover:bg-slate-800"
                 onClick={() => {
                   const el = document.getElementById("contact");
                   if (!el) return;
                   window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
                 }}
               >
-                <NeoButton
-                  variant="ghost"
-                  size="lg"
-                  className="hover:bg-slate-200 dark:hover:bg-slate-800"
-                >
-                  Contact Me
-                </NeoButton>
-              </button>
+                Contact Me
+              </NeoButton>
             </div>
           </div>
 

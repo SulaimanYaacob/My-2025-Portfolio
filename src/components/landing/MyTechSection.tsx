@@ -4,17 +4,10 @@ import { domAnimation, LazyMotion } from "motion/react";
 import Image from "next/image";
 import { TechItem, techList } from "@/app/data/portfolioData";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { useDarkMode } from "@/hooks/useDarkMode";
-
-const MyTechCard = ({ tech, index, isDark }: { tech: TechItem; index: number; isDark: boolean }) => {
+const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
-  const restingShadow = isDark ? "4px 4px 0px 0px #7c3aed" : "4px 4px 0px 0px #0f172a";
-  const pressEffect = {
-    x: 4,
-    y: 4,
-    boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
-  };
+  const pressEffect = { x: 4, y: 4 };
 
   return (
     <LazyMotion features={domAnimation}>
@@ -22,7 +15,6 @@ const MyTechCard = ({ tech, index, isDark }: { tech: TechItem; index: number; is
         initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
-        animate={{ boxShadow: restingShadow }}
         // Trigger on Desktop Hover
         whileHover={pressEffect}
         // Trigger on Mobile/Tablet Tap (Crucial for mobile)
@@ -34,9 +26,8 @@ const MyTechCard = ({ tech, index, isDark }: { tech: TechItem; index: number; is
           opacity: { duration: 0.3, delay: (index + 1) * 0.05 },
           x: { duration: 0.1 },
           y: { duration: 0.1 },
-          boxShadow: { duration: 0.1 },
         }}
-        className={`z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-colors [box-shadow:4px_4px_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} /* Ensures touch feedback is instant on mobile */ touch-manipulation gap-0 active:outline-none sm:gap-3`}
+        className={`z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-[box-shadow] [box-shadow:4px_4px_0_0_#0f172a] hover:[box-shadow:0_0_0_0_#0f172a] active:[box-shadow:0_0_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] dark:hover:[box-shadow:0_0_0_0_#7c3aed] dark:active:[box-shadow:0_0_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} touch-manipulation gap-0 active:outline-none sm:gap-3`}
       >
         <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
           {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
@@ -88,7 +79,6 @@ const TechTrace = ({
 );
 
 export default function MyTechSection() {
-  const { isDark } = useDarkMode();
   return (
     <section
       id="skills"
@@ -121,7 +111,7 @@ export default function MyTechSection() {
           />
 
           {techList.map((tech, index) => (
-            <MyTechCard key={tech.id} tech={tech} index={index} isDark={isDark} />
+            <MyTechCard key={tech.id} tech={tech} index={index} />
           ))}
         </div>
       </div>
