@@ -29,7 +29,7 @@ export const personalInfo = {
   email: "sulaimanyaacob99@gmail.com",
   phone: "(+60)167167638",
   github: "https://github.com/SulaimanYaacob",
-  linkedin: "https://linkedin.com/in/sulaimanyaacob",
+  linkedin: "https://linkedin.com/in/sulaiman-yaacob",
   // Unsplash placeholder — replace with your actual photo
   avatar:
     "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?q=80&w=1974&auto=format&fit=crop",

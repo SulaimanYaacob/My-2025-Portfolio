@@ -13,5 +13,42 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+}
+
+@layer base {
+  /* 1. The background of the scrollbar track */
+  ::-webkit-scrollbar {
+    width: 16px; /* Thick and chunky */
+    height: 16px;
+  }
+
+  /* 2. The background/track */
+  ::-webkit-scrollbar-track {
+    background: #f8fafc; /* slate-50 */
+    border-left: 3px solid #0f172a; /* Thick dark border */
+  }
+
+  /* 3. The draggable handle (Thumb) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #7c3aed; /* Your primary violet-600 */
+    border: 3px solid #0f172a; /* Dark outline around the thumb */
+    box-shadow: 4px 4px 0px 0px #0f172a; /* Optional: tiny internal offset shadow */
+  }
+
+  /* 4. Hover state for the handle */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #d97706; /* Your secondary amber-600 */
+  }
+
+  /* Dark mode support */
+  .dark ::-webkit-scrollbar-track {
+    background: #0f172a; /* slate-900 */
+    border-left: 3px solid #a78bfa; /* violet-400 */
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: #7c3aed;
+    border: 3px solid #a78bfa;
+  }
 }
