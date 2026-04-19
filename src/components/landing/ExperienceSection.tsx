@@ -49,7 +49,7 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-3 top-6 hidden h-4 w-4 rounded-full border-2 border-slate-900 bg-violet-600 md:block dark:border-violet-400" />
+                <div className="absolute left-[13px] top-6 hidden h-4 w-4 rounded-full border-2 border-slate-900 bg-violet-600 md:block dark:border-violet-400" />
 
                 <NeoCard interactive>
                   <div className="flex flex-col flex-wrap items-start justify-between gap-2 sm:flex-row">

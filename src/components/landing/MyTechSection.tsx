@@ -4,11 +4,12 @@ import { domAnimation, LazyMotion } from "motion/react";
 import Image from "next/image";
 import { TechItem, techList } from "@/app/data/portfolioData";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
-const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
+const MyTechCard = ({ tech, index, isDark }: { tech: TechItem; index: number; isDark: boolean }) => {
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
-  // Shared animation properties to keep code clean
+  const restingShadow = isDark ? "4px 4px 0px 0px #7c3aed" : "4px 4px 0px 0px #0f172a";
   const pressEffect = {
     x: 4,
     y: 4,
@@ -21,6 +22,7 @@ const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
         initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
+        animate={{ boxShadow: restingShadow }}
         // Trigger on Desktop Hover
         whileHover={pressEffect}
         // Trigger on Mobile/Tablet Tap (Crucial for mobile)
@@ -86,6 +88,7 @@ const TechTrace = ({
 );
 
 export default function MyTechSection() {
+  const { isDark } = useDarkMode();
   return (
     <section
       id="skills"
@@ -118,7 +121,7 @@ export default function MyTechSection() {
           />
 
           {techList.map((tech, index) => (
-            <MyTechCard key={tech.id} tech={tech} index={index} />
+            <MyTechCard key={tech.id} tech={tech} index={index} isDark={isDark} />
           ))}
         </div>
       </div>
