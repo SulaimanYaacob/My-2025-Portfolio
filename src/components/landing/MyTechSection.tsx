@@ -8,38 +8,33 @@ import SectionHeading from "@/components/ui/SectionHeading";
 const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
+  // Shared animation properties to keep code clean
+  const pressEffect = {
+    x: 4,
+    y: 4,
+    boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
+  };
+
   return (
     <LazyMotion features={domAnimation}>
       <m.div
         initial={{ opacity: 0, y: -20 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, y: 0 }}
-        // THE "CLICKY" HOVER LOGIC
-        whileHover={{
-          x: 4, // Moves right to meet the shadow
-          y: 4, // Moves down to meet the shadow
-          boxShadow: "0px 0px 0px 0px #0f172a", // Shadow "disappears" as card covers it
-        }}
-        // Add a slight dark mode variant for the shadow in the hover state
-        // if your dark mode uses a different shadow color (#7c3aed)
-        variants={{
-          hover: {
-            x: 4,
-            y: 4,
-            boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
-          },
-        }}
+        // Trigger on Desktop Hover
+        whileHover={pressEffect}
+        // Trigger on Mobile/Tablet Tap (Crucial for mobile)
+        whileTap={pressEffect}
         transition={{
-          type: "spring", // Spring makes it feel more "physical" than linear
+          type: "spring",
           stiffness: 400,
           damping: 25,
           opacity: { duration: 0.3, delay: (index + 1) * 0.05 },
-          // The click movement should be very fast
           x: { duration: 0.1 },
           y: { duration: 0.1 },
           boxShadow: { duration: 0.1 },
         }}
-        className={`/* Remove to prevent conflict with Framer Motion */ z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-colors [box-shadow:4px_4px_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} gap-0 sm:gap-3`}
+        className={`z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-colors [box-shadow:4px_4px_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} /* Ensures touch feedback is instant on mobile */ touch-manipulation gap-0 active:outline-none sm:gap-3`}
       >
         <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
           {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
