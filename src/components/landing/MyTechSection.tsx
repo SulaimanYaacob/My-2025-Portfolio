@@ -1,54 +1,34 @@
 "use client";
 import * as m from "motion/react-m";
-import { domAnimation, LazyMotion } from "motion/react";
 import Image from "next/image";
 import { TechItem, techList } from "@/app/data/portfolioData";
 import SectionHeading from "@/components/ui/SectionHeading";
 const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
-  const pressEffect = { x: 4, y: 4 };
-
   return (
-    <LazyMotion features={domAnimation}>
-      <m.div
-        initial={{ opacity: 0, y: -20 }}
-        viewport={{ once: true }}
-        whileInView={{ opacity: 1, y: 0 }}
-        // Trigger on Desktop Hover
-        whileHover={pressEffect}
-        // Trigger on Mobile/Tablet Tap (Crucial for mobile)
-        whileTap={pressEffect}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 25,
-          opacity: { duration: 0.3, delay: (index + 1) * 0.05 },
-          x: { duration: 0.1 },
-          y: { duration: 0.1 },
-        }}
-        className={`z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 transition-[box-shadow] [box-shadow:4px_4px_0_0_#0f172a] hover:[box-shadow:0_0_0_0_#0f172a] active:[box-shadow:0_0_0_0_#0f172a] sm:p-4 dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] dark:hover:[box-shadow:0_0_0_0_#7c3aed] dark:active:[box-shadow:0_0_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} touch-manipulation gap-0 active:outline-none sm:gap-3`}
-      >
-        <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
-          {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
-          {tech.image && (
-            <Image
-              src={tech.image}
-              alt={tech.name}
-              fill
-              className="select-none object-contain"
-              sizes="40px"
-            />
-          )}
-        </div>
+    <div
+      className={`/* 1. THE BASE SHADOW */ /* 2. THE ANIMATION SPEED */ /* 3. DESKTOP HOVER: Moves card and removes */ /* 4. MOBILE/ACTIVE PRESS: Ensures it snaps on click/tap */ z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 shadow transition-all duration-75 ease-linear [box-shadow:4px_4px_0_0_#0f172a] active:translate-x-[4px] active:translate-y-[4px] active:[box-shadow:0_0_0_0_#0f172a] sm:p-4 sm:hover:translate-x-[4px] sm:hover:translate-y-[4px] sm:hover:[box-shadow:0_0_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] dark:active:[box-shadow:0_0_0_0_#7c3aed] dark:sm:hover:[box-shadow:0_0_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} touch-manipulation gap-0 outline-none sm:gap-3`}
+    >
+      <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
+        {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
+        {tech.image && (
+          <Image
+            src={tech.image}
+            alt={tech.name}
+            fill
+            className="select-none object-contain"
+            sizes="40px"
+          />
+        )}
+      </div>
 
-        <div className="hidden min-w-0 flex-1 sm:block">
-          <p className="truncate text-sm font-bold uppercase tracking-tight md:text-base dark:text-slate-50">
-            {tech.name}
-          </p>
-        </div>
-      </m.div>
-    </LazyMotion>
+      <div className="hidden min-w-0 flex-1 sm:block">
+        <p className="truncate text-sm font-bold uppercase tracking-tight md:text-base dark:text-slate-50">
+          {tech.name}
+        </p>
+      </div>
+    </div>
   );
 };
 
