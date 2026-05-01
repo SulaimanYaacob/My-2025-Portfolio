@@ -61,12 +61,14 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 lg:py-0">
         <div className="flex w-full flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex max-w-lg flex-col items-center gap-6 text-center lg:items-start lg:text-left">
-            <div className="hero-badge invisible inline-flex items-center gap-2 rounded border-2 border-slate-900 bg-amber-400 px-3 py-1.5 text-sm font-bold shadow-[4px_4px_0_0_#0f172a] dark:border-violet-400 dark:bg-amber-500 dark:shadow-[4px_4px_0_0_#7c3aed]">
+            {/* Removed 'invisible' */}
+            <div className="hero-badge inline-flex items-center gap-2 rounded border-2 border-slate-900 bg-amber-400 px-3 py-1.5 text-sm font-bold shadow-[4px_4px_0_0_#0f172a] dark:border-violet-400 dark:bg-amber-500 dark:shadow-[4px_4px_0_0_#7c3aed]">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-600 dark:bg-green-400" />
               Available for work
             </div>
 
-            <h1 className="hero-name invisible text-6xl font-black leading-none tracking-tight text-slate-900 md:text-7xl lg:text-8xl dark:text-slate-50">
+            {/* Removed 'invisible' */}
+            <h1 className="hero-name text-6xl font-black leading-none tracking-tight text-slate-900 md:text-7xl lg:text-8xl dark:text-slate-50">
               Sulaiman
               <br />
               <span className="relative mt-2 inline-block">
@@ -75,20 +77,23 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="hero-role invisible text-2xl font-bold md:text-3xl lg:text-4xl">
+            {/* Removed 'invisible' */}
+            <p className="hero-role text-2xl font-bold md:text-3xl lg:text-4xl">
               <span className="bg-gradient-to-r from-violet-600 to-amber-600 bg-clip-text text-transparent">
                 Full-Stack Developer
               </span>
             </p>
 
-            <p className="hero-tagline invisible max-w-md text-lg leading-relaxed text-slate-500 dark:text-slate-400">
+            {/* Removed 'invisible' */}
+            <p className="hero-tagline max-w-md text-lg leading-relaxed text-slate-500 dark:text-slate-400">
               Turning complex problems into clean, scalable software.
               <span className="block font-medium text-slate-700 dark:text-slate-300">
                 Building for the web since 2022.
               </span>
             </p>
 
-            <div className="hero-cta invisible flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+            {/* Removed 'invisible' */}
+            <div className="hero-cta flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <Link href="#projects">
                 <NeoButton variant="primary" size="lg">
                   View Projects
@@ -112,7 +117,8 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="hero-photo-wrapper group invisible relative flex-shrink-0 transition-all duration-700 ease-in-out">
+          {/* Removed 'invisible' AND 'transition-all duration-700 ease-in-out' */}
+          <div className="hero-photo-wrapper group relative flex-shrink-0">
             <div className="relative -rotate-3 transition-transform duration-500 group-hover:rotate-0">
               <div className="rounded border-4 border-slate-900 bg-slate-50 p-3 shadow-[12px_12px_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:shadow-[12px_12px_0_0_#7c3aed]">
                 <div className="h-[300px] w-[240px] overflow-hidden rounded md:h-[400px] md:w-[320px]">
