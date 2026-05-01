@@ -31,8 +31,8 @@ export const personalInfo = {
   github: "https://github.com/SulaimanYaacob",
   linkedin: "https://linkedin.com/in/sulaiman-yaacob",
   // Unsplash placeholder — replace with your actual photo
-  avatar:
-    "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?q=80&w=1974&auto=format&fit=crop",
+  avatar: "/personal-images/profile.jpeg",
+  // "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?q=80&w=1974&auto=format&fit=crop",
 };
 
 // ─────────────────────────────────────────────────────────

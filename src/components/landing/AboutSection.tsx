@@ -54,16 +54,14 @@ export default function AboutSection() {
                 <div className="relative h-full min-h-[400px] w-full">
                   {" "}
                   {/* Container for Next.js Image */}
-                  <div className="relative h-[400px] w-full">
-                    {" "}
-                    {/* Set your desired height/width here */}
+                  <div className="relative h-full overflow-hidden rounded">
                     <Image
                       src={personalInfo.avatar}
                       alt="Sulaiman Yaacob"
                       fill
-                      className="rounded object-cover"
+                      className="scale-[1.5] rounded object-cover [object-position:40%_60%]"
                       sizes="(max-width: 1024px) 100vw, 400px"
-                      priority // Good practice for avatars/hero images
+                      priority
                     />
                   </div>
                 </div>
