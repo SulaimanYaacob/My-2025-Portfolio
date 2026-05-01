@@ -60,7 +60,7 @@ export default function AboutSection() {
                       alt="Sulaiman Yaacob"
                       fill
                       className="scale-[1.5] rounded object-cover [object-position:40%_60%]"
-                      sizes="(max-width: 1024px) 100vw, 400px"
+                      sizes="100vw"
                       priority
                     />
                   </div>

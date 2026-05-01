@@ -128,7 +128,8 @@ export default function HeroSection() {
                     alt="Sulaiman Yaacob"
                     width={320}
                     height={400}
-                    className="h-full w-full origin-bottom scale-[1.5] object-cover grayscale-[20%] transition-all duration-700 ease-out [object-position:center_20%] group-hover:grayscale-0"
+                    sizes="100vw"
+                    className="h-full w-full origin-bottom scale-[1.6] object-cover grayscale-[20%] transition-all duration-700 ease-out [object-position:center_20%] group-hover:grayscale-0"
                   />
                 </div>
               </div>
