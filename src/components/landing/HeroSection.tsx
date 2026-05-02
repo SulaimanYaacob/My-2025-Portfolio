@@ -4,6 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import NeoButton from "@/components/ui/NeoButton";
+import NeoCard from "@/components/ui/NeoCard";
 import { personalInfo } from "@/app/data/portfolioData";
 import FloatingGrid from "../ui/FloatingGrid";
 
@@ -35,6 +36,7 @@ export default function HeroSection() {
         { autoAlpha: 0, y: 20, duration: 0.5, stagger: 0.1 },
         "-=0.3",
       )
+      .from(".hero-quote", { autoAlpha: 0, y: 20, duration: 0.5 }, "-=0.35")
       .from(
         ".hero-photo-wrapper",
         {
@@ -49,26 +51,21 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-900">
-      {/* 1. LAYER: Floating Boxes */}
+    <section className="relative min-h-[calc(100svh-132px)] overflow-hidden bg-slate-50 md:min-h-[calc(100svh-84px)] dark:bg-slate-900">
       <FloatingGrid />
 
-      {/* 2. LAYER: Background Texture & Glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.07] [background-size:28px_28px] dark:bg-[radial-gradient(#7c3aed_1px,transparent_1px)] dark:opacity-[0.09]" />
       <div className="pointer-events-none absolute left-1/3 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-violet-500/15 blur-3xl dark:bg-violet-500/20" />
 
-      {/* 3. LAYER: Content (High Z-Index) */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 lg:py-0">
-        <div className="flex w-full flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex max-w-lg flex-col items-center gap-6 text-center lg:items-start lg:text-left">
-            {/* Removed 'invisible' */}
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-132px)] max-w-7xl items-center px-5 py-8 sm:px-6 md:min-h-[calc(100svh-84px)] lg:py-8">
+        <div className="flex w-full flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
+          <div className="flex max-w-xl flex-col items-center gap-4 text-center md:items-start md:text-left">
             <div className="hero-badge inline-flex items-center gap-2 rounded border-2 border-slate-900 bg-amber-400 px-3 py-1.5 text-sm font-bold shadow-[4px_4px_0_0_#0f172a] dark:border-violet-400 dark:bg-amber-500 dark:shadow-[4px_4px_0_0_#7c3aed]">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-600 dark:bg-green-400" />
               Available for work
             </div>
 
-            {/* Removed 'invisible' */}
-            <h1 className="hero-name text-6xl font-black leading-none tracking-tight text-slate-900 md:text-7xl lg:text-8xl dark:text-slate-50">
+            <h1 className="hero-name text-5xl font-black leading-none tracking-tight text-slate-900 sm:text-6xl lg:text-7xl dark:text-slate-50">
               Sulaiman
               <br />
               <span className="relative mt-2 inline-block">
@@ -77,23 +74,30 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Removed 'invisible' */}
-            <p className="hero-role text-2xl font-bold md:text-3xl lg:text-4xl">
+            <p className="hero-role text-2xl font-bold sm:text-3xl dark:text-slate-50">
               <span className="bg-gradient-to-r from-violet-600 to-amber-600 bg-clip-text text-transparent">
-                Full-Stack Developer
+                {personalInfo.title}
               </span>
             </p>
 
-            {/* Removed 'invisible' */}
-            <p className="hero-tagline max-w-md text-lg leading-relaxed text-slate-500 dark:text-slate-400">
+            <p className="hero-tagline max-w-md text-base leading-relaxed text-slate-500 md:text-lg dark:text-slate-400">
               Turning complex problems into clean, scalable software.
               <span className="block font-medium text-slate-700 dark:text-slate-300">
                 Building for the web since 2022.
               </span>
             </p>
 
-            {/* Removed 'invisible' */}
-            <div className="hero-cta flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+            <NeoCard
+              size="sm"
+              className="hero-quote relative max-w-md bg-amber-100 text-left dark:bg-slate-800"
+            >
+              <span className="absolute -left-1 top-3 h-10 w-2 border-2 border-slate-900 bg-violet-600 dark:border-violet-400 dark:bg-amber-400" />
+              <p className="pl-3 text-base font-bold leading-relaxed text-slate-900 sm:text-lg dark:text-slate-50">
+                {personalInfo.quote}
+              </p>
+            </NeoCard>
+
+            <div className="hero-cta flex flex-wrap items-center justify-center gap-4 md:justify-start">
               <Link href="#projects">
                 <NeoButton variant="primary" size="lg">
                   View Projects
@@ -106,8 +110,14 @@ export default function HeroSection() {
                 onClick={() => {
                   const el = document.getElementById("contact");
                   if (!el) return;
+                  const headerHeight =
+                    document.querySelector("header")?.getBoundingClientRect()
+                      .height ?? 84;
                   window.scrollTo({
-                    top: el.getBoundingClientRect().top + window.scrollY - 80,
+                    top:
+                      el.getBoundingClientRect().top +
+                      window.scrollY -
+                      headerHeight,
                     behavior: "smooth",
                   });
                 }}
@@ -117,11 +127,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Removed 'invisible' AND 'transition-all duration-700 ease-in-out' */}
           <div className="hero-photo-wrapper group relative flex-shrink-0">
             <div className="relative -rotate-3 transition-transform duration-500 group-hover:rotate-0">
-              <div className="rounded border-4 border-slate-900 bg-slate-50 p-3 shadow-[12px_12px_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:shadow-[12px_12px_0_0_#7c3aed]">
-                <div className="h-[300px] w-[240px] overflow-hidden rounded md:h-[400px] md:w-[320px]">
+              <div className="rounded border-4 border-slate-900 bg-slate-50 p-3 [box-shadow:12px_12px_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:12px_12px_0_0_#7c3aed]">
+                <div className="h-[230px] w-[186px] overflow-hidden rounded sm:h-[260px] sm:w-[210px] md:h-[340px] md:w-[272px]">
                   <Image
                     priority
                     src={personalInfo.avatar}

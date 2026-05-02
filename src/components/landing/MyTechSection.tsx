@@ -2,13 +2,19 @@
 import * as m from "motion/react-m";
 import Image from "next/image";
 import { TechItem, techList } from "@/app/data/portfolioData";
+import NeoCard from "@/components/ui/NeoCard";
 import SectionHeading from "@/components/ui/SectionHeading";
+
 const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   const isTwoItemRow = Math.floor((index % 5) / 3) === 1;
 
   return (
-    <div
-      className={`/* 1. THE BASE SHADOW */ /* 2. THE ANIMATION SPEED */ /* 3. DESKTOP HOVER: Moves card and removes */ /* 4. MOBILE/ACTIVE PRESS: Ensures it snaps on click/tap */ z-10 col-span-4 flex cursor-pointer items-center justify-center border-2 border-slate-900 bg-white p-3 shadow transition-all duration-75 ease-linear [box-shadow:4px_4px_0_0_#0f172a] active:translate-x-[4px] active:translate-y-[4px] active:[box-shadow:0_0_0_0_#0f172a] sm:p-4 sm:hover:translate-x-[4px] sm:hover:translate-y-[4px] sm:hover:[box-shadow:0_0_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-800 dark:[box-shadow:4px_4px_0_0_#7c3aed] dark:active:[box-shadow:0_0_0_0_#7c3aed] dark:sm:hover:[box-shadow:0_0_0_0_#7c3aed] ${isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""} touch-manipulation gap-0 outline-none sm:gap-3`}
+    <NeoCard
+      size="sm"
+      interactive
+      className={`z-10 col-span-4 flex min-h-14 touch-manipulation items-center justify-center bg-white p-2 outline-none sm:min-h-16 sm:gap-3 sm:p-4 ${
+        isTwoItemRow && index % 5 === 3 ? "col-start-3" : ""
+      }`}
     >
       <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10">
         {tech.icon && <div className="text-2xl sm:text-3xl">{tech.icon}</div>}
@@ -24,11 +30,11 @@ const MyTechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
       </div>
 
       <div className="hidden min-w-0 flex-1 sm:block">
-        <p className="truncate text-sm font-bold uppercase tracking-tight md:text-base dark:text-slate-50">
+        <p className="truncate text-sm font-bold uppercase md:text-base dark:text-slate-50">
           {tech.name}
         </p>
       </div>
-    </div>
+    </NeoCard>
   );
 };
 
@@ -62,18 +68,18 @@ export default function MyTechSection() {
   return (
     <section
       id="skills"
-      className="relative grid min-h-screen w-full place-items-center overflow-hidden bg-slate-50 dark:bg-slate-900"
+      className="relative grid min-h-[calc(100svh-84px)] w-full place-items-center overflow-hidden bg-slate-50 dark:bg-slate-900"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.08] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.09]" />
 
-      <div className="relative z-0 mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 py-24">
+      <div className="relative z-0 mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-16 sm:px-6 md:gap-12 lg:py-24">
         <SectionHeading
           title="Tools I Use"
-          subtitle="Technologies I'm familiar with across the full stack"
+          subtitle="Frontend, backend, database, testing, automation, and AI tools from my current resume."
           align="center"
         />
 
-        <div className="relative z-0 grid grid-cols-12 gap-4 sm:gap-6">
+        <div className="relative z-0 grid grid-cols-12 gap-3 sm:gap-5">
           <div className="absolute inset-0 z-[-1] flex items-center justify-center">
             <div className="h-[120%] w-[1px] rotate-45 bg-gradient-to-b from-transparent via-violet-500/50 to-transparent" />
             <div className="h-[120%] w-[1px] -rotate-45 bg-gradient-to-b from-transparent via-violet-500/50 to-transparent" />

@@ -25,7 +25,7 @@ export default function NeoButton({
   const sizes = {
     sm: "px-3 py-1.5 text-sm",
     md: "px-5 py-2.5 text-base",
-    lg: "px-7 py-3.5 text-lg",
+    lg: "px-5 py-3 text-base sm:px-7 sm:py-3.5 sm:text-lg",
   };
 
   return (

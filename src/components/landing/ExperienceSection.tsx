@@ -10,25 +10,24 @@ const typeVariant: Record<string, "violet" | "amber" | "neutral"> = {
   "Full-time": "violet",
   Freelance: "amber",
   Internship: "neutral",
+  "Part-time & Intern": "neutral",
 };
 
 export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden bg-white px-4 py-24 dark:bg-slate-950"
+      className="relative overflow-hidden bg-white px-4 py-16 dark:bg-slate-950 lg:py-20"
     >
-      {/* Dot-grid texture */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.07] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.08]" />
 
-      {/* Glow blobs */}
       <div className="pointer-events-none absolute bottom-1/3 left-1/4 h-64 w-64 animate-glow rounded-full bg-violet-500/15 blur-3xl" />
       <div
         className="bg-amber-400/12 pointer-events-none absolute right-1/3 top-1/4 h-48 w-48 animate-glow rounded-full blur-3xl"
         style={{ animationDelay: "1.8s" }}
       />
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto w-full max-w-4xl">
         <SectionHeading
           title="Experience"
           subtitle="Where I've worked and what I've built"
@@ -36,7 +35,6 @@ export default function ExperienceSection() {
 
         <LazyMotion features={domAnimation}>
           <div className="relative flex flex-col gap-0">
-            {/* Vertical line */}
             <div className="absolute left-5 top-0 hidden h-full w-0.5 bg-slate-200 md:block dark:bg-slate-700" />
 
             {experienceList.map((exp, i) => (
@@ -48,7 +46,6 @@ export default function ExperienceSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                {/* Timeline dot */}
                 <div className="absolute left-[13px] top-6 hidden h-4 w-4 rounded-full border-2 border-slate-900 bg-violet-600 md:block dark:border-violet-400" />
 
                 <NeoCard interactive>
