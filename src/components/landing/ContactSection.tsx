@@ -32,12 +32,10 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-white px-4 py-24 dark:bg-slate-950"
+      className="relative flex min-h-[calc(100svh-132px)] items-center overflow-hidden bg-white px-4 py-12 md:min-h-[calc(100svh-84px)] dark:bg-slate-950 lg:py-10"
     >
-      {/* Dot-grid texture */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.07] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.08]" />
 
-      {/* Glow blobs */}
       <div className="bg-amber-400/18 pointer-events-none absolute bottom-1/4 left-1/2 h-72 w-72 -translate-x-1/2 animate-glow rounded-full blur-3xl" />
       <div
         className="bg-violet-500/12 pointer-events-none absolute right-1/3 top-1/4 h-48 w-48 animate-glow rounded-full blur-3xl"
@@ -47,13 +45,14 @@ export default function ContactSection() {
       <div className="relative mx-auto max-w-3xl text-center">
         <SectionHeading
           title="Let's Connect"
-          subtitle="Open to opportunities, collaborations, and interesting conversations."
+          subtitle="Open to full-stack roles, optimization-heavy product work, and practical AI integrations."
           align="center"
+          className="mb-6"
         />
 
         <LazyMotion features={domAnimation}>
           <m.div
-            className="mt-8 grid gap-4 sm:grid-cols-3"
+            className="grid gap-4 sm:grid-cols-3"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
@@ -75,7 +74,7 @@ export default function ContactSection() {
               >
                 <NeoCard
                   interactive
-                  className="flex flex-col items-center gap-3 py-8"
+                  className="flex h-full flex-col items-center gap-3 py-6"
                 >
                   <span className="text-slate-800 dark:text-slate-200">
                     {link.icon}
@@ -83,7 +82,7 @@ export default function ContactSection() {
                   <p className="font-bold text-slate-900 dark:text-slate-50">
                     {link.label}
                   </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="max-w-full break-words text-sm text-slate-500 dark:text-slate-400">
                     {link.desc}
                   </p>
                 </NeoCard>
@@ -92,7 +91,7 @@ export default function ContactSection() {
           </m.div>
 
           <m.div
-            className="mt-10"
+            className="mt-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

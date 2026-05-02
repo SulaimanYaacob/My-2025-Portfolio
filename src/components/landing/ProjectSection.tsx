@@ -12,23 +12,25 @@ export default function ProjectSection() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-white px-4 py-24 dark:bg-slate-950"
+      className="relative flex min-h-[calc(100svh-132px)] items-center overflow-hidden bg-white px-4 py-12 md:min-h-[calc(100svh-84px)] dark:bg-slate-950 lg:py-10"
     >
-      {/* Dot-grid texture */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#0f172a_1px,transparent_1px)] opacity-[0.07] [background-size:20px_20px] dark:bg-[radial-gradient(#a78bfa_1px,transparent_1px)] dark:opacity-[0.08]" />
 
-      {/* Glow blobs */}
       <div className="pointer-events-none absolute right-1/4 top-1/3 h-72 w-72 animate-glow rounded-full bg-violet-500/15 blur-3xl" />
       <div
         className="bg-amber-400/12 pointer-events-none absolute bottom-1/4 left-1/3 h-56 w-56 animate-glow rounded-full blur-3xl"
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="relative mx-auto max-w-7xl">
-        <SectionHeading title="Projects" subtitle="Things I've built" />
+      <div className="relative mx-auto w-full max-w-7xl">
+        <SectionHeading
+          title="Projects"
+          subtitle="Resume-backed work across EdTech, AI, internal portals, and admin systems."
+          className="mb-6"
+        />
 
         <LazyMotion features={domAnimation}>
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {projectList.map((project, i) => (
               <m.div
                 key={project.id}
@@ -40,10 +42,9 @@ export default function ProjectSection() {
                 <NeoCard
                   size="sm"
                   interactive
-                  className="flex h-full flex-col gap-4"
+                  className="flex h-full flex-col gap-3"
                 >
-                  {/* Image */}
-                  <div className="relative h-48 w-full overflow-hidden rounded border-2 border-slate-900 dark:border-violet-400">
+                  <div className="relative h-44 w-full overflow-hidden rounded border-2 border-slate-900 md:h-40 xl:h-36 dark:border-violet-400">
                     <Image
                       priority={i < 2}
                       sizes="(max-width: 1200px) 50vw, 33vw"
@@ -56,7 +57,7 @@ export default function ProjectSection() {
                       alt={project.name}
                     />
                     {project.highlight && (
-                      <span className="absolute right-2 top-2 rounded border-2 border-slate-900 bg-amber-400 px-2 py-0.5 text-xs font-bold dark:border-violet-400">
+                      <span className="absolute right-2 top-2 rounded border-2 border-slate-900 bg-amber-400 px-2 py-0.5 text-xs font-bold text-slate-900 [box-shadow:3px_3px_0_0_#0f172a] dark:border-violet-400 dark:[box-shadow:3px_3px_0_0_#7c3aed]">
                         Featured
                       </span>
                     )}
@@ -64,10 +65,10 @@ export default function ProjectSection() {
 
                   {/* Content */}
                   <div className="flex flex-1 flex-col gap-3">
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50">
                       {project.name}
                     </h3>
-                    <p className="flex-1 text-slate-600 dark:text-slate-300">
+                    <p className="flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                       {project.desc ||
                         "A full-stack web application built with modern technologies."}
                     </p>

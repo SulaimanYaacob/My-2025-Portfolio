@@ -8,20 +8,20 @@ import { personalInfo } from "@/app/data/portfolioData";
 
 const traits = [
   {
-    label: "Self-Taught",
-    desc: "Mastered the stack by reading docs, not waiting for classes.",
+    label: "System Optimization",
+    desc: "Prioritizes performance, reliability, and maintainable architecture.",
   },
   {
-    label: "Problem Solver",
-    desc: "Bridges technical architecture with real-world business needs.",
+    label: "Enterprise Delivery",
+    desc: "Ships campaign, portal, and workflow systems for real users.",
   },
   {
-    label: "Fast Learner",
-    desc: "Concept to deployment in 24 hours — see IntelliBraille.",
+    label: "Testing Mindset",
+    desc: "Uses Jest, Playwright, and Git discipline to reduce regression risk.",
   },
   {
-    label: "Team Player",
-    desc: "Regular cross-functional collaboration with PMs and operators.",
+    label: "AI Integration",
+    desc: "Explores OpenRouter, Ollama, AI SDK, MCP, and Claude Code workflows.",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-slate-50 px-4 py-24 dark:bg-slate-900"
+      className="relative flex min-h-[calc(100svh-132px)] items-center overflow-hidden bg-slate-50 px-4 py-12 md:min-h-[calc(100svh-84px)] lg:py-10 dark:bg-slate-900"
     >
       <div className="relative mx-auto max-w-7xl">
         <SectionHeading
@@ -38,23 +38,17 @@ export default function AboutSection() {
         />
 
         <LazyMotion features={domAnimation}>
-          {/* Changed items-stretch to ensure children can fill height */}
-          <div className="grid items-stretch gap-8 lg:grid-cols-[400px_1fr]">
-            {/* Portrait Column */}
+          <div className="grid items-stretch gap-6 md:grid-cols-[300px_1fr] xl:grid-cols-[340px_1fr]">
             <m.div
-              className="h-full" // Added h-full here
+              className="h-full"
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <NeoCard size="sm" className="h-full">
-                {" "}
-                {/* Added h-full to the card */}
-                <div className="relative h-full min-h-[400px] w-full">
-                  {" "}
-                  {/* Container for Next.js Image */}
-                  <div className="relative h-full overflow-hidden rounded">
+                <div className="relative h-full min-h-[260px] w-full md:min-h-[320px]">
+                  <div className="relative h-full overflow-hidden rounded border-2 border-slate-900 dark:border-violet-400">
                     <Image
                       src={personalInfo.avatar}
                       alt="Sulaiman Yaacob"
@@ -68,7 +62,6 @@ export default function AboutSection() {
               </NeoCard>
             </m.div>
 
-            {/* Bio + traits Column */}
             <div className="flex flex-col gap-6">
               <m.div
                 initial={{ opacity: 0, y: 30 }}
@@ -77,20 +70,20 @@ export default function AboutSection() {
                 transition={{ duration: 0.6 }}
               >
                 <NeoCard>
-                  <p className="text-lg/relaxed text-slate-600 dark:text-slate-300">
+                  <p className="text-base/relaxed text-slate-600 md:text-lg/relaxed dark:text-slate-300">
                     {personalInfo.bio}
                   </p>
-                  <p className="mt-3 text-lg/relaxed text-slate-600 dark:text-slate-300">
-                    Whether building enterprise platforms or rapid prototypes,
-                    I&apos;m driven by curiosity to build things that are fast,
-                    reliable, and actually make life easier for the people using
-                    them.
+                  <p className="mt-3 text-base/relaxed text-slate-600 md:text-lg/relaxed dark:text-slate-300">
+                    My current work spans PostgreSQL architecture, n8n
+                    automation, custom APIs, and tested legacy-system changes.
+                    The common thread is simple: build fast, then keep refining
+                    until the system is dependable.
                   </p>
                 </NeoCard>
               </m.div>
 
               <m.div
-                className="grid flex-grow grid-cols-2 gap-4" // added flex-grow to push layout
+                className="grid flex-grow grid-cols-1 gap-4 sm:grid-cols-2"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}

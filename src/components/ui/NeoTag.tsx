@@ -23,7 +23,7 @@ export default function NeoTag({
   return (
     <span
       className={twMerge(
-        "inline-block rounded border px-2 py-0.5 text-sm font-medium",
+        "inline-block rounded border px-2 py-0.5 text-xs font-medium sm:text-sm",
         variants[variant],
         className,
       )}

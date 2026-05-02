@@ -13,7 +13,11 @@ export default function NeoCard({
   interactive = false,
   className,
 }: NeoCardProps) {
-  const padding = { sm: "p-3", md: "p-6", lg: "p-8" }[size];
+  const padding = {
+    sm: "p-3",
+    md: "p-4 sm:p-6",
+    lg: "p-5 sm:p-8",
+  }[size];
   const shadow = size === "lg"
     ? "[box-shadow:8px_8px_0_0_#0f172a] dark:[box-shadow:8px_8px_0_0_#7c3aed]"
     : "[box-shadow:4px_4px_0_0_#0f172a] dark:[box-shadow:4px_4px_0_0_#7c3aed]";
