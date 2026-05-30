@@ -65,7 +65,11 @@ export default function Header() {
               href={item.href}
               onClick={(event) => {
                 event.preventDefault();
-                item.id ? smoothScrollTo(item.id) : scrollHome();
+                if (item.id) {
+                  smoothScrollTo(item.id);
+                  return;
+                }
+                scrollHome();
               }}
               className={navLinkClass}
             >

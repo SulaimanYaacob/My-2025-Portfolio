@@ -4,6 +4,10 @@ type NeoButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
+  href?: string;
+  download?: boolean | string;
+  target?: string;
+  rel?: string;
 };
 
 export default function NeoButton({
@@ -28,11 +32,20 @@ export default function NeoButton({
     lg: "px-5 py-3 text-base sm:px-7 sm:py-3.5 sm:text-lg",
   };
 
+  const classes = twMerge(base, variants[variant], sizes[size], className);
+
+  if (props.href) {
+    const anchorProps = props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+    return (
+      <a className={classes} {...anchorProps}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button
-      className={twMerge(base, variants[variant], sizes[size], className)}
-      {...props}
-    >
+    <button className={classes} {...props}>
       {children}
     </button>
   );
