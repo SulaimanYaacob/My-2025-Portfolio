@@ -75,7 +75,7 @@ export default function MyTechSection() {
       <div className="relative z-0 mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-16 sm:px-6 md:gap-12 lg:py-24">
         <SectionHeading
           title="Tools I Use"
-          subtitle="Frontend, backend, database, testing, automation, and AI tools from my current resume."
+          subtitle="Frontend, APIs, databases, automation, testing, and practical AI."
           align="center"
         />
 

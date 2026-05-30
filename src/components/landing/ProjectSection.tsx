@@ -2,13 +2,42 @@
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
 import Image from "next/image";
+import { useState } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import NeoCard from "@/components/ui/NeoCard";
 import NeoTag from "@/components/ui/NeoTag";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { projectList } from "@/app/data/portfolioData";
+import { ProjectItem, projectList } from "@/app/data/portfolioData";
+
+const ProjectVisual = ({
+  project,
+}: {
+  project: ProjectItem;
+}) => {
+  return (
+    <Image
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      className="bg-slate-100 object-contain p-1 dark:bg-slate-900"
+      fill
+      loading={project.category === "personal" ? "eager" : "lazy"}
+      src={project.src ?? "/project-images/inter-iqra.png"}
+      alt={`${project.name} screenshot`}
+    />
+  );
+};
+
+const tabs: Array<{ label: string; value: ProjectItem["category"] }> = [
+  { label: "Personal", value: "personal" },
+  { label: "Company Work", value: "company" },
+];
 
 export default function ProjectSection() {
+  const [activeCategory, setActiveCategory] =
+    useState<ProjectItem["category"]>("personal");
+  const filteredProjects = projectList.filter(
+    (project) => project.category === activeCategory,
+  );
+
   return (
     <section
       id="projects"
@@ -25,13 +54,46 @@ export default function ProjectSection() {
       <div className="relative mx-auto w-full max-w-7xl">
         <SectionHeading
           title="Projects"
-          subtitle="Resume-backed work across EdTech, AI, internal portals, and admin systems."
+          subtitle="Selected product work, grouped by personal builds and careful company snapshots."
           className="mb-6"
         />
 
+        <div
+          className="mb-6 flex justify-center"
+          role="tablist"
+          aria-label="Project category"
+        >
+          <div className="inline-flex rounded border-2 border-slate-900 bg-white p-1 [box-shadow:5px_5px_0_0_#0f172a] dark:border-violet-400 dark:bg-slate-900 dark:[box-shadow:5px_5px_0_0_#7c3aed]">
+            {tabs.map((tab) => {
+              const isActive = activeCategory === tab.value;
+
+              return (
+                <button
+                  key={tab.value}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveCategory(tab.value)}
+                  className={`rounded px-4 py-2 text-sm font-black transition-colors sm:px-5 ${
+                    isActive
+                      ? "bg-violet-600 text-white dark:bg-amber-400 dark:text-slate-950"
+                      : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <LazyMotion features={domAnimation}>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {projectList.map((project, i) => (
+          <div
+            className={`grid gap-4 md:grid-cols-2 ${
+              activeCategory === "personal" ? "xl:grid-cols-4" : "xl:grid-cols-3"
+            }`}
+          >
+            {filteredProjects.map((project, i) => (
               <m.div
                 key={project.id}
                 initial={{ opacity: 0, y: 40 }}
@@ -44,18 +106,8 @@ export default function ProjectSection() {
                   interactive
                   className="flex h-full flex-col gap-3"
                 >
-                  <div className="relative h-44 w-full overflow-hidden rounded border-2 border-slate-900 md:h-40 xl:h-36 dark:border-violet-400">
-                    <Image
-                      priority={i < 2}
-                      sizes="(max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                      fill
-                      src={
-                        project.src ??
-                        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
-                      }
-                      alt={project.name}
-                    />
+                  <div className="relative aspect-video w-full overflow-hidden rounded border-2 border-slate-900 bg-slate-100 dark:border-violet-400 dark:bg-slate-900">
+                    <ProjectVisual project={project} />
                     {project.highlight && (
                       <span className="absolute right-2 top-2 rounded border-2 border-slate-900 bg-amber-400 px-2 py-0.5 text-xs font-bold text-slate-900 [box-shadow:3px_3px_0_0_#0f172a] dark:border-violet-400 dark:[box-shadow:3px_3px_0_0_#7c3aed]">
                         Featured
@@ -63,8 +115,14 @@ export default function ProjectSection() {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="flex flex-1 flex-col gap-3">
+                    {(project.period || project.roleSummary) && (
+                      <div>
+                        <NeoTag variant="neutral">
+                          {project.period ?? project.roleSummary}
+                        </NeoTag>
+                      </div>
+                    )}
                     <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50">
                       {project.name}
                     </h3>

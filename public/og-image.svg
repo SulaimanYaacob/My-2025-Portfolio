@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <path d="M0 0H1200V630H0V0Z" fill="url(#grid)"/>
+  <rect x="78" y="84" width="1044" height="462" fill="#FFFFFF" stroke="#0F172A" stroke-width="8"/>
+  <rect x="94" y="100" width="1044" height="462" fill="#0F172A"/>
+  <rect x="78" y="84" width="1044" height="462" fill="#FFFFFF" stroke="#0F172A" stroke-width="8"/>
+  <rect x="126" y="132" width="116" height="116" fill="#7C3AED" stroke="#0F172A" stroke-width="8"/>
+  <path d="M207 169C202 162 194 158 183 158C170 158 160 165 160 176C160 186 168 191 183 194C196 197 200 199 200 205C200 211 195 215 186 215C177 215 170 211 165 204L154 214C162 224 172 229 186 229C204 229 216 220 216 205C216 192 207 186 189 183C179 181 176 179 176 175C176 171 180 168 185 168C192 168 197 171 201 176L207 169Z" fill="#F8FAFC"/>
+  <text x="278" y="186" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="900">Sulaiman Yaacob</text>
+  <rect x="278" y="216" width="426" height="48" fill="#FBBF24" stroke="#0F172A" stroke-width="5"/>
+  <text x="300" y="249" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="900">Full-Stack Developer</text>
+  <text x="126" y="348" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">Production web apps, campaign systems,</text>
+  <text x="126" y="404" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">automation workflows, APIs, dashboards,</text>
+  <text x="126" y="460" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">and practical AI integrations.</text>
+  <circle cx="980" cy="168" r="46" fill="#FBBF24" stroke="#0F172A" stroke-width="7"/>
+  <rect x="936" y="350" width="92" height="92" fill="#38BDF8" stroke="#0F172A" stroke-width="7"/>
+  <rect x="1016" y="276" width="70" height="70" fill="#7C3AED" stroke="#0F172A" stroke-width="7"/>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#0F172A" fill-opacity="0.1"/>
+    </pattern>
+  </defs>
+</svg>

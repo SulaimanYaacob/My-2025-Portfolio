@@ -10,17 +10,17 @@ const focusAreas = [
   "Software Engineering",
   "Web Development",
   "Database Systems",
-  "System Architecture",
-  "Quality Engineering",
   "API Development",
+  "Quality Engineering",
   "UX Optimization",
+  "Product Development",
 ];
 
 const stats = [
-  { label: "GPA", value: "3.65", accent: "amber" },
+  { label: "CGPA", value: "3.65", accent: "amber" },
   { label: "Years", value: "4.5", accent: "violet" },
   { label: "Graduated", value: "2025", accent: "amber" },
-  { label: "Rank", value: "Top 10%", accent: "violet" },
+  { label: "Scholarship", value: "JPA", accent: "violet" },
 ] as const;
 
 export default function EducationSection() {
@@ -40,7 +40,7 @@ export default function EducationSection() {
       <div className="relative mx-auto w-full max-w-5xl">
         <SectionHeading
           title="Education"
-          subtitle="Software Engineering foundation with a focus on practical systems."
+          subtitle="Software Engineering foundation backed by practical product, database, and quality work."
           className="mb-6"
         />
 
@@ -55,8 +55,10 @@ export default function EducationSection() {
               className="flex flex-col gap-5"
             >
               <NeoCard size="md" className="relative overflow-hidden">
-                <div className="absolute left-0 top-0 h-full w-2 bg-violet-600 dark:bg-violet-500" />
-                <div className="pl-6">
+                <div className="absolute right-4 top-4 rounded border-2 border-slate-900 bg-violet-600 px-3 py-1 text-xs font-black uppercase tracking-widest text-slate-50 [box-shadow:3px_3px_0_0_#0f172a] dark:border-violet-400 dark:bg-violet-700 dark:[box-shadow:3px_3px_0_0_#7c3aed]">
+                  JPA Scholar
+                </div>
+                <div className="pr-0 pt-10 sm:pr-28 sm:pt-0">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
@@ -78,7 +80,7 @@ export default function EducationSection() {
                           {edu.gpa}
                         </p>
                         <p className="text-sm font-bold uppercase tracking-widest text-slate-700">
-                          GPA
+                          CGPA
                         </p>
                       </div>
                     </div>

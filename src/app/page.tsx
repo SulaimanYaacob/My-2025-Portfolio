@@ -3,7 +3,6 @@ import AboutSection from "@/components/landing/AboutSection";
 import ExperienceSection from "@/components/landing/ExperienceSection";
 import MyTechSection from "@/components/landing/MyTechSection";
 import ProjectSection from "@/components/landing/ProjectSection";
-import EducationSection from "@/components/landing/EducationSection";
 import ContactSection from "@/components/landing/ContactSection";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <ExperienceSection />
       <MyTechSection />
       <ProjectSection />
-      <EducationSection />
       <ContactSection />
     </main>
   );

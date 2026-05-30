@@ -1,7 +1,7 @@
 "use client";
 import * as m from "motion/react-m";
 import { LazyMotion, domAnimation } from "motion/react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import NeoCard from "@/components/ui/NeoCard";
 import NeoButton from "@/components/ui/NeoButton";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -45,7 +45,7 @@ export default function ContactSection() {
       <div className="relative mx-auto max-w-3xl text-center">
         <SectionHeading
           title="Let's Connect"
-          subtitle="Open to full-stack roles, optimization-heavy product work, and practical AI integrations."
+          subtitle="Open to full-stack roles where production systems, data workflows, and maintainable delivery matter."
           align="center"
           className="mb-6"
         />
@@ -91,18 +91,29 @@ export default function ContactSection() {
           </m.div>
 
           <m.div
-            className="mt-8"
+            className="mt-8 flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <a href={`mailto:${personalInfo.email}`}>
-              <NeoButton variant="primary" size="lg">
-                <FaEnvelope />
-                Say Hello
-              </NeoButton>
-            </a>
+            <NeoButton
+              href={`mailto:${personalInfo.email}`}
+              variant="primary"
+              size="lg"
+            >
+              <FaEnvelope />
+              Say Hello
+            </NeoButton>
+            <NeoButton
+              href={personalInfo.resume}
+              download
+              variant="secondary"
+              size="lg"
+            >
+              <FaDownload />
+              Download Resume
+            </NeoButton>
           </m.div>
         </LazyMotion>
       </div>

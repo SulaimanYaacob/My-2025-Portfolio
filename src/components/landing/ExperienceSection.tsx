@@ -30,7 +30,7 @@ export default function ExperienceSection() {
       <div className="relative mx-auto w-full max-w-4xl">
         <SectionHeading
           title="Experience"
-          subtitle="Where I've worked and what I've built"
+          subtitle="Production web systems, internal tools, automations, and support work across real teams."
         />
 
         <LazyMotion features={domAnimation}>
